@@ -5,9 +5,10 @@ from networkit import graphtools
 from networkit import centrality
 from networkit.graph import Graph
 from networkit.distance import BFS
+from networkit.distance import MultiTargetBFS
+from time import time
 
 
-# plmCommunities = detectCommunities(G)
 def compute_community(G):
     plm_communities = comity.detectCommunities(G, algo=comity.PLM(G, True))
     community_induced_graph = {}
@@ -51,13 +52,14 @@ def compute_community_gateway(graph: Graph, community_graph: Graph, community_no
         return max_ICL_node
 
 
-
-
-
-
-
-
-
+def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
+    bfs = MultiTargetBFS(graph, node, LBC_nodes)
+    bfs.run()
+    summation_LBC_distances = sum(bfs.getDistances())
+    bfs = MultiTargetBFS(graph, node, gateways)
+    bfs.run()
+    summation_gateways_distances = sum(bfs.getDistances())
+    return 1/(alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
 def community_centrality_std(G):
@@ -68,10 +70,17 @@ def community_centrality_std(G):
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
         gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
-    print(max_LBC_community)
+
+    ranking_nodes = []
+    for node in G.iterNodes():
+        glr_i = compute_GLR(node, G, max_LBC_community, gateways)
+        ranking_nodes.append((node, glr_i))
+    ranking_nodes.sort(reverse=False, key=lambda item: item[1])
+    return ranking_nodes
 
 
 if __name__ == "__main__":
     G = readGraph("../graphs/exemple_small.graph", Format.METIS)
-    print(type(G))
-    community_centrality_std(G)
+    start = time()
+    centrality_rank = community_centrality_std(G)
+    print(time() - start)
