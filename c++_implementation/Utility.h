@@ -7,6 +7,7 @@
 #include <unordered_set>
 #include <list>
 #include <iostream>
+#include <utility>
 
 class Utility {
     public:
@@ -14,9 +15,7 @@ class Utility {
 
         static void stdImplementation(NetworKit::Graph& G);
 
-        static std::pair<NetworKit::Partition*,  std::list<NetworKit::Graph*>> computeComunity(NeyworKit::Graph& G)
-
-
+        static std::pair<NetworKit::Partition*,  std::list<NetworKit::Graph*>> computeComunity(NetworKit::Graph &G);
 
         virtual ~Utility();
 
