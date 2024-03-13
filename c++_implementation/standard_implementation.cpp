@@ -7,6 +7,7 @@
 //============================================================================
 #include <iostream>
 #include <boost/program_options.hpp>
+#include "Utility.h"
 #include <networkit/io/METISGraphReader.hpp>
 
 using namespace std;
@@ -53,7 +54,9 @@ int main(int argc, char** argv) {
 	graphReader = new METISGraphReader();
 	*graph = graphReader->read(graph_location);
 
-	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";	
+	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
+
+    Utility::stdImplementation(graph);
 
 	delete graphReader;
 	delete graph;
