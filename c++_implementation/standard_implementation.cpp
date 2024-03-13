@@ -47,13 +47,10 @@ int main(int argc, char** argv) {
 		throw std::runtime_error("wrong graph_location");
 	}
 
-	METISGraphReader* graphReader;
-	Graph* graph;
+	METISGraphReader* graphReader = new METISGraphReader();
+	Graph* graph = new Graph();
 
-	graph = new Graph();
-	graphReader = new METISGraphReader();
 	*graph = graphReader->read(graph_location);
-
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
     Utility::stdImplementation(graph);
