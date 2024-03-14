@@ -7,6 +7,7 @@
 #include <networkit/structures/Partition.hpp>
 #include <networkit/graph/GraphTools.hpp>
 #include <networkit/distance/BFS.hpp>
+#include <networkit/distance/MultiTargetBFS.hpp>
 #include <networkit/centrality/Betweenness.hpp>
 #include <unordered_set>
 #include <list>
@@ -19,12 +20,14 @@ class Utility {
     public:
         Utility();
         virtual ~Utility();
-        static void stdImplementation(NetworKit::Graph* G);
+        static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G);
 
     private:
         static std::pair<NetworKit::Partition,  std::map<int, NetworKit::Graph>> computeComunity(NetworKit::Graph* G);
         static std::pair<NetworKit::node, double> btwMax(NetworKit::Graph* graph);
-        static NetworKit::node Utility::computeCommunityGateway(NetworKit::Graph* graph,  NetworKit::Graph* communityGraph, std::set<NetworKit::index> communityNodes, std::pair<NetworKit::node, double> maxLBC_node );
+        static NetworKit::node computeCommunityGateway(NetworKit::Graph* graph,  NetworKit::Graph* communityGraph, std::set<NetworKit::index> communityNodes, std::pair<NetworKit::node, double> maxLBC_node );
+        static double computeGLR(NetworKit::node nodeI, NetworKit::Graph* graph,std::list<NetworKit::node> LBC_nodes, std::list<NetworKit::node> gateways, double alpha1=0.5, double alpha2=0.5);
+        static bool compareCentralityNode(std::pair<NetworKit::node, double> node1, std::pair<NetworKit::node, double> node2);
 
 
 };

@@ -9,6 +9,7 @@
 #include <boost/program_options.hpp>
 #include "Utility.h"
 #include <networkit/io/METISGraphReader.hpp>
+#include "mytimer.h"
 
 using namespace std;
 using namespace NetworKit;
@@ -53,7 +54,24 @@ int main(int argc, char** argv) {
 	*graph = graphReader->read(graph_location);
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
-    Utility::stdImplementation(graph);
+    mytimer* t_counter = new mytimer();
+    vector<pair<node, double>> rankingNodes = Utility::stdImplementation(graph);
+    double elapsed = t_counter->elapsed();
+    cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
+    /*
+    t_counter->restart();
+    while(t_counter->elapsed() < 1){
+        cout << "...";
+    }
+
+    cout << "\n Node \t|\t Centrality Degree \n";
+    cout << "___________________________________\n";
+    for(auto i = rankingNodes.begin(); i != rankingNodes.end(); i ++ ){
+        cout << i->first << "\t|\t" << i->second << "\n";
+        cout << "___________________________________\n";
+    }
+     */
+
 
 	delete graphReader;
 	delete graph;
