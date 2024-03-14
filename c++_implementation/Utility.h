@@ -6,6 +6,7 @@
 #include <networkit/community/PLM.hpp>
 #include <networkit/structures/Partition.hpp>
 #include <networkit/graph/GraphTools.hpp>
+#include <networkit/distance/BFS.hpp>
 #include <networkit/centrality/Betweenness.hpp>
 #include <unordered_set>
 #include <list>
