@@ -62,19 +62,22 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     return 1/(alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
-def community_centrality_std(G):
+def community_centrality_std(G, start_time):
     community_sets, community_graphs = compute_community(G)
+
+    print("community computation: ", time()-start_time)
     max_LBC_community = {}
     gateways = {}
     for i in community_graphs.keys():
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
         gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
-
+    print("nodes computation: ", time() - start_time)
     ranking_nodes = []
     for node in G.iterNodes():
         glr_i = compute_GLR(node, G, max_LBC_community, gateways)
         ranking_nodes.append((node, glr_i))
+    print("GLR computation: ", time() - start_time)
     ranking_nodes.sort(reverse=False, key=lambda item: item[1])
     return ranking_nodes
 
@@ -82,5 +85,5 @@ def community_centrality_std(G):
 if __name__ == "__main__":
     G = readGraph("../graphs/exemple_small.graph", Format.METIS)
     start = time()
-    centrality_rank = community_centrality_std(G)
+    centrality_rank = community_centrality_std(G, start)
     print(time() - start)

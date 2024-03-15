@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
     mytimer* t_counter = new mytimer();
-    vector<pair<node, double>> rankingNodes = Utility::stdImplementation(graph);
+    vector<pair<node, double>> rankingNodes = Utility::stdImplementation(graph, t_counter);
     double elapsed = t_counter->elapsed();
     cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
     /*

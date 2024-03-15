@@ -15,15 +15,16 @@
 #include <map>
 #include <iostream>
 #include <utility>
+#include "mytimer.h"
 
 class Utility {
     public:
         Utility();
         virtual ~Utility();
-        static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G);
+        static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G, mytimer* t_counter);
 
     private:
-        static std::pair<NetworKit::Partition,  std::map<int, NetworKit::Graph>> computeComunity(NetworKit::Graph* G);
+        static std::pair<NetworKit::Partition*,  std::map<int, NetworKit::Graph*>> computeComunity(NetworKit::Graph* G);
         static std::pair<NetworKit::node, double> btwMax(NetworKit::Graph* graph);
         static NetworKit::node computeCommunityGateway(NetworKit::Graph* graph,  NetworKit::Graph* communityGraph, std::set<NetworKit::index> communityNodes, std::pair<NetworKit::node, double> maxLBC_node );
         static double computeGLR(NetworKit::node nodeI, NetworKit::Graph* graph,std::list<NetworKit::node> LBC_nodes, std::list<NetworKit::node> gateways, double alpha1=0.5, double alpha2=0.5);
