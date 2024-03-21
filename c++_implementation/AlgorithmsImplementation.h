@@ -1,5 +1,5 @@
-#ifndef UTILITY_H_
-#define UTILITY_H_
+#ifndef AlgorithmsImplementation_H_
+#define AlgorithmsImplementation_H_
 
 #include <networkit/Globals.hpp>
 #include <networkit/graph/Graph.hpp>
@@ -17,10 +17,10 @@
 #include <utility>
 #include "mytimer.h"
 
-class Utility {
+class AlgorithmsImplementation {
     public:
-        Utility();
-        virtual ~Utility();
+        AlgorithmsImplementation();
+        virtual ~AlgorithmsImplementation();
         static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G, mytimer* t_counter);
 
     private:

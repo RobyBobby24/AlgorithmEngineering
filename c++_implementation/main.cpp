@@ -7,7 +7,7 @@
 //============================================================================
 #include <iostream>
 #include <boost/program_options.hpp>
-#include "Utility.h"
+#include "AlgorithmsImplementation.h"
 #include <networkit/io/METISGraphReader.hpp>
 #include "mytimer.h"
 
@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
     mytimer* t_counter = new mytimer();
-    vector<pair<node, double>> rankingNodes = Utility::stdImplementation(graph, t_counter);
+    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter);
     double elapsed = t_counter->elapsed();
     cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
     /*

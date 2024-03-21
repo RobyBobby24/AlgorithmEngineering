@@ -9,7 +9,7 @@ before running the  python code make sure you have already done follow steps:
 1) install python and pip (sudo apt install python3 python3-pip)
 2) install necessary library (pip install -r requirements.txt)
 
-before running the  C++ code make sure you have already done follow steps: 
+before running the  C++ code make sure you have already done follow steps (assuming that you are using a Linux base environment): 
 1) install g++ (sudo apt install g++ )
 2) install cmake (sudo apt install cmake)
 3) install gpp (sudo apt install gpp)
@@ -18,3 +18,4 @@ before running the  C++ code make sure you have already done follow steps:
 7) install libboost_program_options library (sudo apt install libboost-program-options-dev)
 8) install libboost_timer library (sudo apt install libboost-timer-dev)
 9) install networkit ([istallation guide](https://github.com/networkit/networkit))
+10) set LD_LIBRARY_PATH environment variable to networkit library location or move it to /usr/lib/ (write on ~/.bashrc export LD_LIBRARY_PATH=location/networkit/build/)

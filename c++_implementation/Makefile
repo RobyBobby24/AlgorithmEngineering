@@ -2,7 +2,7 @@ CXX = g++ -std=c++17
 DBG = -g
 OPT = -Ofast -DNDEBUG -march=native
 VALGRIND = -g -DNDEBUG
-UTILITY = Utility
+UTILITY = AlgorithmsImplementation
 
 
 OPTIONS = -lboost_serialization -lboost_program_options -lboost_system -lboost_filesystem -fopenmp -lnetworkit -lboost_timer
@@ -10,7 +10,7 @@ OPTIONS = -lboost_serialization -lboost_program_options -lboost_system -lboost_f
 INCLUDEPATH = $(HOME)/networkit/include/ -I/usr/include/valgrind  -I$(HOME)/networkit/extlibs/tlx/ -I$(HOME)/networkit/extlibs/ttmath/
 PATHLIB = $(HOME)/networkit/build/
 
-TARGETS = standard_implementation
+TARGETS = main
 
 debug:
 	$(foreach var,$(TARGETS),$(CXX) $(var).cpp $(UTILITY).cpp $(DBG) -o $(var) -I$(INCLUDEPATH) -L$(PATHLIB) $(OPTIONS);)

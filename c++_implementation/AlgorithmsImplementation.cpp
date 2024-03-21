@@ -5,7 +5,7 @@
 // Copyright   : Copyright © 2024 by Roberto Di Stefano
 // Description :
 //============================================================================
-#include "Utility.h"
+#include "AlgorithmsImplementation.h"
 
 //using namespace NetworKit::CommunityDetectionAlgorithm;
 //using namespace NetworKit::Centrality;
@@ -13,11 +13,11 @@ using namespace NetworKit::GraphTools;
 using namespace NetworKit;
 using namespace std;
 
-Utility::Utility(){}
+AlgorithmsImplementation::AlgorithmsImplementation(){}
 
-Utility::~Utility(){}
+AlgorithmsImplementation::~AlgorithmsImplementation(){}
 
-pair<Partition*,  map<int, Graph*>> Utility::computeComunity(Graph* G){
+pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::computeComunity(Graph* G){
     PLM* plmCommunityAlgo = new PLM(*G);
     plmCommunityAlgo->run();
 
@@ -40,7 +40,7 @@ pair<Partition*,  map<int, Graph*>> Utility::computeComunity(Graph* G){
     return result;
 }
 
-pair<node, double> Utility::btwMax(Graph* graph){
+pair<node, double> AlgorithmsImplementation::btwMax(Graph* graph){
     Betweenness* LBC = new Betweenness( *graph);
     LBC->run();
     pair<node, double> result = LBC->ranking()[1];
@@ -49,7 +49,7 @@ pair<node, double> Utility::btwMax(Graph* graph){
     return result;
 }
 
-node Utility::computeCommunityGateway(Graph* graph,  Graph* communityGraph, set<node> communityNodes, pair<node, double> maxLBC_node ){
+node AlgorithmsImplementation::computeCommunityGateway(Graph* graph,  Graph* communityGraph, set<node> communityNodes, pair<node, double> maxLBC_node ){
     int maxICL = 0;
     list<node> maxICL_node;
     node result;
@@ -85,7 +85,7 @@ node Utility::computeCommunityGateway(Graph* graph,  Graph* communityGraph, set<
     return result;
 }
 
-double Utility::computeGLR(node nodeI, Graph* graph,list<node> LBC_nodes, list<node> gateways, double alpha1, double alpha2){
+double AlgorithmsImplementation::computeGLR(node nodeI, Graph* graph,list<node> LBC_nodes, list<node> gateways, double alpha1, double alpha2){
     MultiTargetBFS* bfs = new MultiTargetBFS(*graph, nodeI, LBC_nodes.begin(), LBC_nodes.end());
     bfs->run();
     vector<double> distances = bfs->getDistances();
@@ -100,12 +100,12 @@ double Utility::computeGLR(node nodeI, Graph* graph,list<node> LBC_nodes, list<n
     return 1.0/(alpha1*summationLBC_distances + alpha2*summationGatewaysDistances);
 }
 
-bool Utility::compareCentralityNode(pair<node, double> node1, pair<node, double> node2){
+bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, pair<node, double> node2){
     return node1.second < node2.second ;
 }
 
-vector<pair<node, double>> Utility::stdImplementation(NetworKit::Graph* G, mytimer* t_counter){
-    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = Utility::computeComunity(G);
+vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter){
+    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeComunity(G);
     Partition* communitySets = plmCommunitiesAndGraphs.first;
     map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
 
@@ -118,7 +118,7 @@ vector<pair<node, double>> Utility::stdImplementation(NetworKit::Graph* G, mytim
     list<node> gatewaysList;
 
     for(auto i = communityGraphs.begin(); i != communityGraphs.end(); i ++ ){
-        pair<node, double> maxLBC_node = Utility::btwMax(i->second);
+        pair<node, double> maxLBC_node = AlgorithmsImplementation::btwMax(i->second);
         //maxLBC_community[i->first] = maxLBC_node;
         maxLBC_communityList.push_back(maxLBC_node.first);
         node communityGateway = computeCommunityGateway(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
@@ -138,7 +138,7 @@ vector<pair<node, double>> Utility::stdImplementation(NetworKit::Graph* G, mytim
     elapsed = t_counter->elapsed();
     cout << "GLR computation "<<"elapsed time: "<< elapsed << "\n";
 
-    sort(rankingNodes.begin(), rankingNodes.end(), Utility::compareCentralityNode);
+    sort(rankingNodes.begin(), rankingNodes.end(), AlgorithmsImplementation::compareCentralityNode);
     return rankingNodes;
 }
 
