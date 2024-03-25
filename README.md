@@ -19,3 +19,13 @@ before running the  C++ code make sure you have already done follow steps (assum
 8) install libboost_timer library (sudo apt install libboost-timer-dev)
 9) install networkit ([istallation guide](https://github.com/networkit/networkit))
 10) set LD_LIBRARY_PATH environment variable to networkit library location or move it to /usr/lib/ (write on ~/.bashrc export LD_LIBRARY_PATH=location/networkit/build/)
+
+once the python initial setup is complete you can run python code just follow this steps:
+1) navigate to the 'python_implementation' directory (cd python_implementation)
+2) run code (python3 algorithms_implementation.py)
+3) input the path to the graph when prompted
+
+once the C++ initial setup is complete you can run C++ code just follow this steps:
+1) navigate to the 'c++_implementation' directory (cd c++_implementation)
+2) compile code (make release)
+3) run code passing the path to graph as option (./main -g ../graphs/exemple_small.graph)

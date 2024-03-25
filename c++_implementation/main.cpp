@@ -75,6 +75,7 @@ int main(int argc, char** argv) {
 
 	delete graphReader;
 	delete graph;
+	delete t_counter;
 
 
 	return 0;
