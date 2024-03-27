@@ -8,6 +8,7 @@
 #include <iostream>
 #include <boost/program_options.hpp>
 #include "AlgorithmsImplementation.h"
+#include "CsvWriter.h"
 #include <networkit/io/METISGraphReader.hpp>
 #include "mytimer.h"
 
@@ -54,10 +55,20 @@ int main(int argc, char** argv) {
 	*graph = graphReader->read(graph_location);
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
+    CsvWriter* csvWriter = new CsvWriter();
     mytimer* t_counter = new mytimer();
     vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter);
     double elapsed = t_counter->elapsed();
     cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
+
+    csvWriter->write(
+            rankingNodes,
+            "C++Std",
+            {"Node", "Centrality Degree"},
+            // ToDo definisci e passa la funzione
+            );
+
+
     /*
     t_counter->restart();
     while(t_counter->elapsed() < 1){
@@ -80,3 +91,5 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
+
+

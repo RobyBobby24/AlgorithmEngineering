@@ -18,7 +18,7 @@ AlgorithmsImplementation::AlgorithmsImplementation(){}
 AlgorithmsImplementation::~AlgorithmsImplementation(){}
 
 pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::computeComunity(Graph* G){
-    PLM* plmCommunityAlgo = new PLM(*G);
+    PLM* plmCommunityAlgo = new PLM(*G, true);
     plmCommunityAlgo->run();
 
     Partition* plmCommunity = new Partition();

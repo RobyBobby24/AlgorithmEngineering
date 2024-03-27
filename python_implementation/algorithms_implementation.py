@@ -7,7 +7,8 @@ from networkit.graph import Graph
 from networkit.distance import BFS
 from networkit.distance import MultiTargetBFS
 from time import time
-from os import listdir
+import os
+from csv_writer import CsvWriter
 
 
 def compute_community(G):
@@ -84,10 +85,16 @@ def community_centrality_std(G, start_time):
 
 
 if __name__ == "__main__":
-    for i, gp in enumerate(listdir("../graphs/")):
+    for i, gp in enumerate(os.listdir("../graphs/")):
         print(f"{i+1}) ../graphs/{gp}")
     graph_path = input("Enter the graph path (above you can find some suggestions):")
     G = readGraph(graph_path, Format.METIS)
     start = time()
     centrality_rank = community_centrality_std(G, start)
     print(time() - start)
+    CsvWriter().write(
+        centrality_rank,
+        "../results/pythonStd",
+        ["Node", "Centrality Degree"],
+        lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]}
+    )
