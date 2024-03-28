@@ -10,7 +10,7 @@
 #include <map>
 #include <utility>
 
-template<typename RowType>
+template<typename RowType>;
 using namespace std;
 
 class CsvWriter {
