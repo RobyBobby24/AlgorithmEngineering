@@ -19,8 +19,8 @@ vector<map<string, string>> ToCsvFormat(vector<pair<node, double>> rankingNodes,
     vector<map<string, string>> data;
     for( auto dataRow = rankingNodes.begin(); dataRow != rankingNodes.end(); ++dataRow){
         map<string, string> row;
-        row[ labels[1]] = dataRow -> first;
-        row[ labels[2]] = dataRow -> second;
+        row[ labels[0]] = dataRow -> first;
+        row[ labels[1]] = dataRow -> second;
         data.push_back(row);
     }
     return data;
