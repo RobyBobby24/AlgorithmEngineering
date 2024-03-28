@@ -94,7 +94,7 @@ if __name__ == "__main__":
     print(time() - start)
     CsvWriter().write(
         centrality_rank,
-        "../results/pythonStd",
+        "../results/pythonStd.csv",
         ["Node", "Centrality Degree"],
         lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]}
     )
