@@ -1,4 +1,4 @@
-0import csv
+import csv
 import os
 
 
@@ -10,7 +10,7 @@ class CsvWriter:
         return cls.instance
 
     def write(self, data, file_path, labels, item_to_row_func=None, overwrite=False):
-        file_name = file_path
+        file_name = f"{file_path}.csv"
         if not overwrite:
             result_id = 0
             while os.path.exists(file_name):

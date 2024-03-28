@@ -12,7 +12,9 @@ from csv_writer import CsvWriter
 
 
 def compute_community(G):
-    plm_communities = comity.detectCommunities(G, algo=comity.PLM(G, True))
+    plm_community_algo = comity.PLM(G, True)
+    plm_community_algo.run()
+    plm_communities = plm_community_algo.getPartition()
     community_induced_graph = {}
     for i in range(plm_communities.numberOfSubsets()):
         subset = plm_communities.getMembers(i)
@@ -94,7 +96,7 @@ if __name__ == "__main__":
     print(time() - start)
     CsvWriter().write(
         centrality_rank,
-        "../results/pythonStd.csv",
+        "../results/pythonStd",
         ["Node", "Centrality Degree"],
         lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]}
     )
