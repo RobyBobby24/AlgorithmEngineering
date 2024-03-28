@@ -19,12 +19,14 @@ void CsvWriter::write(vector<map<string, string>> data, string filePath, string 
     string fileName = filePath;
     if( !overwrite){
         int resultId = 0;
-        while(exists(fileName)){
+        while(exists(fileName+".csv")){
             fileName = filePath + to_string(resultId);
             resultId += 1;
         }
     }
 
+
+    fileName = fileName + ".csv";
     ofstream csvFile (fileName);
 
     for (int i = 0; i < labelsSize-1; ++i) {
