@@ -25,7 +25,7 @@ void CsvWriter::write(vector<map<string, string>> data, string filePath, string 
         }
     }
 
-    char delimiter = ";"
+    char delimiter = ";";
 
     ofstream csvFile (fileName);
 
@@ -57,7 +57,7 @@ void CsvWriter::write(vector<RowType> data, string filePath, string labels[], ma
         }
     }
 
-    char delimiter = ";"
+    char delimiter = ";";
 
     ofstream csvFile (fileName);
 
