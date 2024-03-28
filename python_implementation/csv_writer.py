@@ -10,9 +10,9 @@ class CsvWriter:
         return cls.instance
 
     def write(self, data, file_path, labels, item_to_row_func=None, overwrite=False):
+        file_name = file_path
         if not overwrite:
             result_id = 0
-            file_name = file_path
             while os.path.exists(file_name):
                 result_id += 1
                 file_name = f"{file_path}{result_id}.csv"

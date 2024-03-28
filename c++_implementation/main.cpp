@@ -15,6 +15,17 @@
 using namespace std;
 using namespace NetworKit;
 
+vector<map<string, string>> ToCsvFormat(vector<pair<node, double>> rankingNodes, string labels[2]){
+    vector<map<string, string>> data;
+    for( auto dataRow = rankingNodes.begin(); dataRow != rankingNodes.end(); ++dataRow){
+        map<string, string> row;
+        row[ labels[1]] = dataRow -> first;
+        row[ labels[2]] = dataRow -> second;
+        data.push_back(row);
+    }
+    return data;
+}
+
 int main(int argc, char** argv) {
 	// number of string writed from user
 	// argv array of string writed (program_name, 1°param, ...)
@@ -55,18 +66,19 @@ int main(int argc, char** argv) {
 	*graph = graphReader->read(graph_location);
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
-    CsvWriter* csvWriter = new CsvWriter();
     mytimer* t_counter = new mytimer();
     vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter);
     double elapsed = t_counter->elapsed();
     cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
 
+    string labels[2] = {"Node", "Centrality Degree"};
+    CsvWriter* csvWriter = new CsvWriter();
+    vector<map<string, string>> rankingNodesCsv = ToCsvFormat(rankingNodes, labels);
     csvWriter->write(
-            rankingNodes,
-            "C++Std",
-            {"Node", "Centrality Degree"},
-            // ToDo definisci e passa la funzione
-            );
+            rankingNodesCsv,
+            "../results/C++Std",
+            labels,
+            2);
 
 
     /*
@@ -87,6 +99,7 @@ int main(int argc, char** argv) {
 	delete graphReader;
 	delete graph;
 	delete t_counter;
+    delete csvWriter;
 
 
 	return 0;

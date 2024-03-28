@@ -10,15 +10,11 @@
 #include <map>
 #include <utility>
 
-template<typename RowType>;
-using namespace std;
-
 class CsvWriter {
     public:
         CsvWriter();
         virtual ~CsvWriter();
-        void CsvWriter::write(vector<RowType> data, string filePath, string labels[],  map<string, string> (*itemToRowFunc)(RowType), bool overwrite=False);
-        void CsvWriter::write(vector<RowType> data, string filePath, string labels[], bool overwrite=False);
+        void write(std::vector<std::map<std::string, std::string>> data, std::string filePath, std::string labels[],int labelsSize, bool overwrite=false);
 
 };
 
