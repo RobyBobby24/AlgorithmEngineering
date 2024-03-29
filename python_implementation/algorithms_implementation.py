@@ -9,6 +9,7 @@ from networkit.distance import MultiTargetBFS
 from time import time
 import os
 from csv_writer import CsvWriter
+import pdb
 
 
 def compute_community(G):
@@ -72,6 +73,7 @@ def community_centrality_std(G, start_time):
     print("community computation: ", time()-start_time)
     max_LBC_community = {}
     gateways = {}
+    #pdb.set_trace() start debug
     for i in community_graphs.keys():
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
