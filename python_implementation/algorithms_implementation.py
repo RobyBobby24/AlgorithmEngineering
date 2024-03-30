@@ -10,12 +10,23 @@ from time import time
 import os
 from csv_writer import CsvWriter
 import pdb
+from networkit.graphio import BinaryPartitionReader
 
 
 def compute_community(G):
     plm_community_algo = comity.PLM(G, True)
     plm_community_algo.run()
     plm_communities = plm_community_algo.getPartition()
+    community_induced_graph = {}
+    for i in range(plm_communities.numberOfSubsets()):
+        subset = plm_communities.getMembers(i)
+        community_induced_graph[i] = graphtools.subgraphFromNodes(G, subset)
+    return plm_communities, community_induced_graph
+
+
+def read_community(G: Graph, community_path):
+    partition_reader = BinaryPartitionReader()
+    plm_communities = partition_reader.read(community_path)
     community_induced_graph = {}
     for i in range(plm_communities.numberOfSubsets()):
         subset = plm_communities.getMembers(i)
@@ -68,7 +79,8 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
 
 
 def community_centrality_std(G, start_time):
-    community_sets, community_graphs = compute_community(G)
+    #community_sets, community_graphs = compute_community(G) #compute community from graph
+    community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
 
     print("community computation: ", time()-start_time)
     max_LBC_community = {}

@@ -27,3 +27,14 @@ class CsvWriter:
                 if item_to_row_func is not None:
                     row = item_to_row_func(row)
                 writer.writerow(row)
+
+    def read(self, file_path):
+        result = []
+        with open(file_path, 'r') as file:
+            reader = csv.DictReader(file, delimiter=";")
+            for line in reader:
+                result.append(line)
+        return result
+
+if __name__ == '__main__':
+    result = CsvWriter().read("../partial_results/community.csv")

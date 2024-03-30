@@ -17,7 +17,28 @@ AlgorithmsImplementation::AlgorithmsImplementation(){}
 
 AlgorithmsImplementation::~AlgorithmsImplementation(){}
 
-pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::computeComunity(Graph* G){
+pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::readCommunity(Graph* G, string filePath){
+    BinaryPartitionReader* partitionReader = new BinaryPartitionReader();
+
+    Partition* plmCommunity = new Partition();
+    *plmCommunity = partitionReader->read(filePath);
+
+    delete partitionReader;
+
+    map<int, Graph*> community_graphs;
+    for(int i= 0; i < plmCommunity->numberOfSubsets(); ++i){
+        set<index> subset = plmCommunity->getMembers(i);
+        unordered_set<index> subset_unordered  (subset.begin(), subset.end() );
+        Graph* community_graph = new Graph( subgraphFromNodes(*G, subset_unordered));
+        community_graphs[i] = community_graph;
+    }
+
+    pair<Partition*,  map<int, Graph*>> result (plmCommunity, community_graphs );
+
+    return result;
+}
+
+pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::computeCommunity(Graph* G){
     PLM* plmCommunityAlgo = new PLM(*G, true);
     plmCommunityAlgo->run();
 
@@ -107,7 +128,8 @@ bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, p
 }
 
 vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter){
-    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeComunity(G);
+    //pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
+    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, "../partial_results/community");
     Partition* communitySets = plmCommunitiesAndGraphs.first;
     map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
 
