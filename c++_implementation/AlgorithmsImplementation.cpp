@@ -51,33 +51,35 @@ pair<node, double> AlgorithmsImplementation::btwMax(Graph* graph){
 
 node AlgorithmsImplementation::computeCommunityGateway(Graph* graph,  Graph* communityGraph, set<node> communityNodes, pair<node, double> maxLBC_node ){
     int maxICL = 0;
-    list<node> maxICL_node;
+    list<node> maxICL_nodes;
     node result;
     for(auto nodeFrom = communityNodes.begin(); nodeFrom != communityNodes.end(); nodeFrom ++ ) {
         int totalDegree = graph->degree(*nodeFrom);
         int innerDegree = communityGraph->degree(*nodeFrom);
         int outDegree = totalDegree - innerDegree;
         if (outDegree > maxICL) {
-            maxICL_node = {*nodeFrom};
+            maxICL = outDegree;
+            maxICL_nodes.clear();
+            maxICL_nodes.push_back(*nodeFrom);
         }
         else if (outDegree == maxICL) {
-            maxICL_node.push_back(*nodeFrom);
+            maxICL_nodes.push_back(*nodeFrom);
         }
     }
-    if (maxICL_node.size() == 1){
-        result = *maxICL_node.begin();
+    if (maxICL_nodes.size() == 1){
+        result = *maxICL_nodes.begin();
     }
     else {
         int minDistance = 0;
         int distance;
         node maxICL_node;
-        for(auto nodeI = communityNodes.begin(); nodeI != communityNodes.end(); nodeI ++ ){
+        for(auto nodeI = maxICL_nodes.begin(); nodeI != maxICL_nodes.end(); nodeI ++ ){
             BFS* bfs = new BFS( *communityGraph, *nodeI, false, false, maxLBC_node.first);
             bfs->run();
             distance = bfs->distance( maxLBC_node.first);
             if (minDistance == 0 || distance < minDistance){
                 minDistance = distance;
-                maxICL_node = maxLBC_node.first;
+                maxICL_node = *nodeI;
             }
         }
         result = maxICL_node;

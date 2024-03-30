@@ -14,7 +14,7 @@ PATHLIB = $(HOME)/networkit/build/
 TARGETS = main
 
 debug:
-	$(foreach var,$(TARGETS),$(CXX) $(var).cpp $(UTILITY).cpp $(CSVWRITER).cpp $(DBG) -o $(var) -I$(INCLUDEPATH) -L$(PATHLIB) $(OPTIONS);)
+	$(foreach var,$(TARGETS),$(CXX) $(var).cpp $(UTILITY).cpp $(CSVWRITER).cpp $(DBG) -o $(var) -I$(INCLUDEPATH) -L$(PATHLIB) $(OPTIONS) -g;)
 
 release:
 	$(foreach var,$(TARGETS),$(CXX) $(var).cpp $(UTILITY).cpp $(CSVWRITER).cpp $(OPT) -o $(var) -I$(INCLUDEPATH) -L$(PATHLIB) $(OPTIONS);)
