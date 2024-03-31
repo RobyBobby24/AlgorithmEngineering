@@ -37,7 +37,7 @@ def read_community(G: Graph, community_path):
 def btw_max(graph):
     LBC = centrality.Betweenness(graph)
     LBC.run()
-    return LBC.ranking()[1]
+    return LBC.ranking()[0]
 
 
 def compute_community_gateway(graph: Graph, community_graph: Graph, community_nodes, max_LBC_node):
@@ -69,10 +69,11 @@ def compute_community_gateway(graph: Graph, community_graph: Graph, community_no
 
 
 def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
-    bfs = MultiTargetBFS(graph, node, LBC_nodes)
+    # pdb.set_trace() # start debug
+    bfs = MultiTargetBFS(graph, node, LBC_nodes.values())
     bfs.run()
     summation_LBC_distances = sum(bfs.getDistances())
-    bfs = MultiTargetBFS(graph, node, gateways)
+    bfs = MultiTargetBFS(graph, node, gateways.values())
     bfs.run()
     summation_gateways_distances = sum(bfs.getDistances())
     return 1/(alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
@@ -85,7 +86,7 @@ def community_centrality_std(G, start_time):
     print("community computation: ", time()-start_time)
     max_LBC_community = {}
     gateways = {}
-    #pdb.set_trace() start debug
+    # pdb.set_trace() # start debug
     for i in community_graphs.keys():
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node

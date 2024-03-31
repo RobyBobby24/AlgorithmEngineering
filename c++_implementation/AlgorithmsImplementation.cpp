@@ -64,7 +64,7 @@ pair<Partition*,  map<int, Graph*>> AlgorithmsImplementation::computeCommunity(G
 pair<node, double> AlgorithmsImplementation::btwMax(Graph* graph){
     Betweenness* LBC = new Betweenness( *graph);
     LBC->run();
-    pair<node, double> result = LBC->ranking()[1];
+    pair<node, double> result = LBC->ranking()[0];
     delete LBC;
 
     return result;
