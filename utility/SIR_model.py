@@ -31,8 +31,9 @@ class SIR_model(Diffusion_model):
         total_infected_number = len(self._infected_nodes)
         total_recovered_number = 0
 
-        # Esegui il modello SIR
         while iterations_number > 0:
+            #ASSERT iteration consistent
+            assert iterations_number + it_time == self._iterations_number
             iterations_number -= 1
             it_time += 1
             node_to_infect = set()
@@ -41,6 +42,8 @@ class SIR_model(Diffusion_model):
                 for neighbor in graph.iterNeighbors(node):
                     # if neighbor is not just infected or ricovered
                     if infected_values[neighbor] not in [1, 2]:
+                        # ASSERT infected value consistent
+                        assert neighbor not in self._infected_nodes
                         # check if neighbor will infect
                         if random.random() < self._beta:
                             # if it will infect save the time and add mark it
@@ -54,8 +57,18 @@ class SIR_model(Diffusion_model):
                     infected_values[node] = 2
                     node_to_recover.add(node)
                     total_recovered_number += 1
+            # ASSERT removed and added nodes consistent
+            assert node_to_infect.isdisjoint(infected_nodes)
+            assert node_to_recover.issubset(infected_nodes)
+            assert all(infected_values[node] == 1 for node in node_to_infect)
+            assert all(infected_values[node] == 2 for node in node_to_recover)
+            assert all(any(neighbor in infected_nodes for neighbor in graph.iterNeighbors(node)) for node in node_to_infect)
             infected_nodes = infected_nodes.difference(node_to_recover)
             infected_nodes = infected_nodes.union(node_to_infect)
+            assert all(infected_values[node] == 1 for node in infected_nodes)
+            assert not any(value == 1 and node not in infected_nodes for node, value in infected_values.items())
+            assert not any(value == 0 and node in infected_nodes for node, value in infected_values.items())
+            assert not any(value == 2 and node in infected_nodes for node, value in infected_values.items())
             infected_number.append(total_infected_number)
             recovered_number.append(total_recovered_number)
 
