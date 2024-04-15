@@ -8,7 +8,7 @@ class CsvWriter:
             cls.instance = super(CsvWriter, cls).__new__(cls)
         return cls.instance
 
-    def write(self, data, file_path, labels, item_to_row_func=None, overwrite=False):
+    def write(self, data, file_path, labels, item_to_row_func=None, overwrite=False, file_open_mode="w"):
         file_name = f"{file_path}.csv"
         if not overwrite:
             result_id = 0
@@ -16,7 +16,7 @@ class CsvWriter:
                 result_id += 1
                 file_name = f"{file_path}{result_id}.csv"
 
-        with open(file_name, mode='w', newline='') as csvfile:
+        with open(file_name, mode=file_open_mode, newline='') as csvfile:
             # Creazione dell'oggetto writer
             writer = csv.DictWriter(csvfile, delimiter=";", fieldnames=labels)
             # Scrittura dell'header (nomi delle colonne)

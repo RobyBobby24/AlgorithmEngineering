@@ -128,8 +128,8 @@ bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, p
 }
 
 vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter){
-    //pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
-    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, "../partial_results/community");
+    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
+    //pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, "../partial_results/community");
     Partition* communitySets = plmCommunitiesAndGraphs.first;
     map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
 

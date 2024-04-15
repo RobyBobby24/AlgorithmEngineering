@@ -6,7 +6,7 @@ from networkit import centrality
 from networkit.graph import Graph
 from networkit.distance import BFS
 from networkit.distance import MultiTargetBFS
-from time import time
+from time import process_time, time
 import os
 from csv_writer import CsvWriter
 import pdb
@@ -76,14 +76,20 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     bfs = MultiTargetBFS(graph, node, gateways.values())
     bfs.run()
     summation_gateways_distances = sum(bfs.getDistances())
-    return 1/(alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
+    return 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
-def community_centrality_std(G, start_time):
-    #community_sets, community_graphs = compute_community(G) #compute community from graph
-    community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
+def community_centrality_std(G, start_time, measure_time_func=None):
+    # pdb.set_trace()
+    times = {}
+    community_sets, community_graphs = compute_community(G)  # compute community from graph
+    # community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
 
-    print("community computation: ", time()-start_time)
+    if measure_time_func is not None:
+        times["Community computation"] = measure_time_func() - start_time
+    else:
+        print("community computation: ", time() - start_time)
+
     max_LBC_community = {}
     gateways = {}
     # pdb.set_trace() # start debug
@@ -91,27 +97,61 @@ def community_centrality_std(G, start_time):
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
         gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
-    print("nodes computation: ", time() - start_time)
+
+    if measure_time_func is not None:
+        times["Nodes computation"] = measure_time_func() - start_time
+    else:
+        print("nodes_computation: ", time() - start_time)
+
     ranking_nodes = []
     for node in G.iterNodes():
         glr_i = compute_GLR(node, G, max_LBC_community, gateways)
         ranking_nodes.append((node, glr_i))
-    print("GLR computation: ", time() - start_time)
+
+    if measure_time_func is not None:
+        times["GLR computation"] = measure_time_func() - start_time
+    else:
+        print("GLR_computation: ", time() - start_time)
+
     ranking_nodes.sort(reverse=False, key=lambda item: item[1])
-    return ranking_nodes
+
+    if measure_time_func is not None:
+        return ranking_nodes, times
+
+    else:
+        return ranking_nodes
 
 
 if __name__ == "__main__":
     for i, gp in enumerate(os.listdir("../graphs/")):
-        print(f"{i+1}) ../graphs/{gp}")
+        print(f"{i + 1}) ../graphs/{gp}")
     graph_path = input("Enter the graph path (above you can find some suggestions):")
     G = readGraph(graph_path, Format.METIS)
-    start = time()
-    centrality_rank = community_centrality_std(G, start)
-    print(time() - start)
+    start = process_time()
+    measure_time = True
+
+    centrality_rank, times = community_centrality_std(G, start, process_time)
+
+    if measure_time:
+        times["Total"] = process_time() - start
+        print(process_time() - start)
+    else:
+        print(process_time() - start)
+    file_name = graph_path.split("/")[-1]
+
     CsvWriter().write(
         centrality_rank,
-        "../results/pythonStd",
+        f"../results/pythonStd({file_name})",
         ["Node", "Centrality Degree"],
         lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]}
     )
+
+    if measure_time:
+        times["Graph"] = file_name
+        print(times)
+        CsvWriter().write(
+            [times],
+            f"../results/time",
+            ["Graph", "Community computation", "Nodes computation", "GLR computation", "Total"],
+            file_open_mode="a"
+        )

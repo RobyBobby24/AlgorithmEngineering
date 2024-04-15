@@ -1,7 +1,6 @@
 import networkit as nk
-import numpy as np
 import random
-from diffusion_model import Diffusion_model
+from utility.diffusion_models.diffusion_model import Diffusion_model
 
 
 class SIR_model(Diffusion_model):
