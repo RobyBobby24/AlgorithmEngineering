@@ -14,7 +14,7 @@ class CsvWriter {
     public:
         CsvWriter();
         virtual ~CsvWriter();
-        void write(std::vector<std::map<std::string, std::string>> data, std::string filePath, std::string labels[],int labelsSize, bool overwrite=false);
+        void write(std::vector<std::map<std::string, std::string>> data, std::string filePath, std::string labels[],int labelsSize,std::ios_base::openmode mode=std::ios::out, bool overwrite=true);
 
 };
 

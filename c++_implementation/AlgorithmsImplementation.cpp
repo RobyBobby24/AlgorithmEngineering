@@ -127,7 +127,7 @@ bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, p
     return node1.second < node2.second ;
 }
 
-vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter){
+vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap){
     pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
     //pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, "../partial_results/community");
     Partition* communitySets = plmCommunitiesAndGraphs.first;
@@ -135,6 +135,9 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
 
     double elapsed = t_counter->elapsed();
     cout << "community computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Community computation", to_string(elapsed)});
+    }
 
     //map<int, pair<node, double>> maxLBC_community;
     list<node> maxLBC_communityList;
@@ -151,6 +154,9 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
 
     elapsed = t_counter->elapsed();
     cout << "nodes computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Nodes computation", to_string(elapsed)});
+    }
 
     vector<pair<node, double>> rankingNodes;
     for( auto nodeI : G->nodeRange() ){
@@ -161,8 +167,18 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
 
     elapsed = t_counter->elapsed();
     cout << "GLR computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"GLR computation", to_string(elapsed)});
+    }
 
     sort(rankingNodes.begin(), rankingNodes.end(), AlgorithmsImplementation::compareCentralityNode);
+    elapsed = t_counter->elapsed();
+    cout << "Total "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Total", to_string(elapsed)});
+    }
+
+
     return rankingNodes;
 }
 

@@ -26,6 +26,19 @@ vector<map<string, string>> ToCsvFormat(vector<pair<node, double>> rankingNodes,
     return data;
 }
 
+string getFileName(string filePath) {
+    // Find position of the last '/'
+    size_t lastSlashPos = filePath.find_last_of('/');
+    string fileName = filePath;
+    // Check if is valid position
+    if (lastSlashPos != std::string::npos) {
+        // Get Substring '/'
+        fileName = filePath.substr(lastSlashPos + 1);
+    }
+
+    return fileName;
+}
+
 int main(int argc, char** argv) {
 	// number of string writed from user
 	// argv array of string writed (program_name, 1°param, ...)
@@ -36,7 +49,8 @@ int main(int argc, char** argv) {
 	po::options_description desc("Allowed options");
 
 	desc.add_options()
-	("graph_location,g", po::value<std::string>(), "Input Graph File Location");
+	("graph_location,g", po::value<std::string>(), "Input Graph File Location")
+	("flag,f", po::value<std::string>(), "Input Flag String");
 
 
 	po::variables_map vm;
@@ -45,6 +59,7 @@ int main(int argc, char** argv) {
 
 	int source = -1;
 	string graph_location;
+	std::string flag;
 
 	if (vm.empty()){
 			cout << desc << "\n";
@@ -54,31 +69,59 @@ int main(int argc, char** argv) {
 	if (vm.count("graph_location"))
 			graph_location = vm["graph_location"].as<string>();
 
+    if (vm.count("flag")) {
+            flag = vm["flag"].as<std::string>();
+    }
 
 	if(graph_location == ""){
 		cout << desc << "\n";
 		throw std::runtime_error("wrong graph_location");
 	}
 
+
+    // read graph
 	METISGraphReader* graphReader = new METISGraphReader();
 	Graph* graph = new Graph();
 
 	*graph = graphReader->read(graph_location);
 	std::cout << "number of nodes: " << graph->numberOfNodes()<< "\n";
 
-    mytimer* t_counter = new mytimer();
-    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter);
-    double elapsed = t_counter->elapsed();
-    cout << "end Algorithm "<<"elapsed time: "<< elapsed << "\n";
+	// get graph file name
+	string fileName = getFileName(graph_location);
 
+    // setup time
+    mytimer* t_counter = new mytimer();
+    map<string, string>* elapsedMap = new map<string, string>();
+    elapsedMap->insert({"Code", "C++"});
+    elapsedMap->insert({"Graph", fileName});
+    elapsedMap->insert({"Flag", flag});
+    // algorithm execution
+    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap);
+
+    // save results
     string labels[2] = {"Node", "Centrality Degree"};
     CsvWriter* csvWriter = new CsvWriter();
     vector<map<string, string>> rankingNodesCsv = ToCsvFormat(rankingNodes, labels);
+    string pathFile = "../results/C++Std";
+    pathFile = pathFile + "(" + fileName + ")";
     csvWriter->write(
             rankingNodesCsv,
-            "../results/C++Std",
+            pathFile,
             labels,
             2);
+
+
+// save times
+    string labelsTime[7] = {"Code", "Graph", "Flag", "Community computation","Nodes computation", "GLR computation", "Total"};
+    vector<map<string, string>> elapsedMapCsv;
+    elapsedMapCsv.push_back(*elapsedMap);
+    csvWriter->write(
+            elapsedMapCsv,
+            "../results/time",
+            labelsTime,
+            7,
+            ios::app);
+
 
 
     /*
@@ -104,5 +147,9 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
+
+
+
+
 
 

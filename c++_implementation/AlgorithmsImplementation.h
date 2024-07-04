@@ -22,7 +22,7 @@ class AlgorithmsImplementation {
     public:
         AlgorithmsImplementation();
         virtual ~AlgorithmsImplementation();
-        static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G, mytimer* t_counter);
+        static std::vector<std::pair<NetworKit::node, double>> stdImplementation(NetworKit::Graph* G, mytimer* t_counter, std::map<std::string, std::string>* elapsedMap=NULL);
 
     private:
         static std::pair<NetworKit::Partition*,  std::map<int, NetworKit::Graph*>> computeCommunity(NetworKit::Graph* G);

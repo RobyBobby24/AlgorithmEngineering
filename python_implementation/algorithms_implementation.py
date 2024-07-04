@@ -8,11 +8,13 @@ from networkit.distance import BFS
 from networkit.distance import MultiTargetBFS
 from time import process_time, time
 import os
-from csv_writer import CsvWriter
+from utility.csv_writer import CsvWriter
+import argparse
 import pdb
 from networkit.graphio import BinaryPartitionReader
 
 
+# Function for Algorithm
 def compute_community(G):
     plm_community_algo = comity.PLM(G, True)
     plm_community_algo.run()
@@ -121,37 +123,76 @@ def community_centrality_std(G, start_time, measure_time_func=None):
     else:
         return ranking_nodes
 
+# Utility function to manage input/output
+def get_IO_paths():
+    # Read Parameters
+    parser = argparse.ArgumentParser(description='Process some parameters.')
+    parser.add_argument('-g', '--graph', type=str, help='Path to the graph file', required=False)
+    parser.add_argument('-r', '--result-folder', type=str, help='Path of result folder', required=False)
+    parser.add_argument('-f', '--flag', type=str, help='A flag to mark the result', required=False)
+    args = parser.parse_args()
 
-if __name__ == "__main__":
-    for i, gp in enumerate(os.listdir("../graphs/")):
-        print(f"{i + 1}) ../graphs/{gp}")
-    graph_path = input("Enter the graph path (above you can find some suggestions):")
-    G = readGraph(graph_path, Format.METIS)
-    start = process_time()
-    measure_time = True
+    graph_path = args.graph
+    result_folder = args.result_folder
+    flag = args.flag
+    # If graph is not passed as args require it as standard input
+    if graph_path is None:
+        for i, gp in enumerate(os.listdir("../graphs/")):
+            print(f"{i + 1}) ../graphs/{gp}")
+        graph_path = input("Enter the graph path (above you can find some suggestions):")
 
-    centrality_rank, times = community_centrality_std(G, start, process_time)
+    if result_folder is None:
+        result_folder = "../results"
 
-    if measure_time:
-        times["Total"] = process_time() - start
-        print(process_time() - start)
-    else:
-        print(process_time() - start)
-    file_name = graph_path.split("/")[-1]
+    if flag is None:
+        flag = "prova"
 
+    return graph_path, result_folder, flag
+
+
+def save_results(file_name, centrality_rank, times=None):
     CsvWriter().write(
         centrality_rank,
-        f"../results/pythonStd({file_name})",
+        f"{result_folder}/pythonStd({file_name})",
         ["Node", "Centrality Degree"],
-        lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]}
+        lambda node_degree: {"Node": node_degree[0], "Centrality Degree": node_degree[1]},
+        True
     )
 
-    if measure_time:
+    if times is not None:
         times["Graph"] = file_name
         print(times)
         CsvWriter().write(
             [times],
-            f"../results/time",
-            ["Graph", "Community computation", "Nodes computation", "GLR computation", "Total"],
+            f"{result_folder}/time",
+            ["Code", "Graph", "Flag", "Community computation", "Nodes computation", "GLR computation", "Total"],
             file_open_mode="a"
         )
+
+if __name__ == "__main__":
+
+    graph_path, result_folder, flag = get_IO_paths()
+
+    # load graph from path
+    G = readGraph(graph_path, Format.METIS)
+    # setup time
+    start = process_time()
+    measure_time = True
+
+    # exec algorithm (save result in centrality_rank, and time in times)
+    centrality_rank, times = community_centrality_std(G, start, process_time)
+
+    # compute and print final time and save results
+    file_name = graph_path.split("/")[-1]
+    if measure_time:
+        times["Total"] = process_time() - start
+        times["Code"] = "python"
+        times["Flag"] = flag
+        print(process_time() - start)
+        save_results(file_name, centrality_rank, times)
+    else:
+        print(process_time() - start)
+        save_results(file_name, centrality_rank)
+
+
+
