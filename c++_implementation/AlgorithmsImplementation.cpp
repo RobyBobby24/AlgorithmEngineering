@@ -134,10 +134,12 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
     map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
 
     double elapsed = t_counter->elapsed();
+    t_counter->pause();
     cout << "community computation "<<"elapsed time: "<< elapsed << "\n";
     if(elapsedMap != NULL){
         elapsedMap->insert({"Community computation", to_string(elapsed)});
     }
+    t_counter->resume();
 
     //map<int, pair<node, double>> maxLBC_community;
     list<node> maxLBC_communityList;
@@ -153,10 +155,12 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
     }
 
     elapsed = t_counter->elapsed();
+    t_counter->pause();
     cout << "nodes computation "<<"elapsed time: "<< elapsed << "\n";
     if(elapsedMap != NULL){
         elapsedMap->insert({"Nodes computation", to_string(elapsed)});
     }
+    t_counter->resume();
 
     vector<pair<node, double>> rankingNodes;
     for( auto nodeI : G->nodeRange() ){
@@ -166,17 +170,21 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
     }
 
     elapsed = t_counter->elapsed();
+    t_counter->pause();
     cout << "GLR computation "<<"elapsed time: "<< elapsed << "\n";
     if(elapsedMap != NULL){
         elapsedMap->insert({"GLR computation", to_string(elapsed)});
     }
+    t_counter->resume();
 
     sort(rankingNodes.begin(), rankingNodes.end(), AlgorithmsImplementation::compareCentralityNode);
     elapsed = t_counter->elapsed();
+    t_counter->pause();
     cout << "Total "<<"elapsed time: "<< elapsed << "\n";
     if(elapsedMap != NULL){
         elapsedMap->insert({"Total", to_string(elapsed)});
     }
+    t_counter->resume();
 
 
     return rankingNodes;

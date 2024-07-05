@@ -1,4 +1,4 @@
-# BarabasiAlbertGenerator begin with a start Graph that has n_0  connected nodes
+# BarabasiAlbertGenerator begin with a _start Graph that has n_0  connected nodes
 # at each step connect a new node to a random node (n_i) with probability of:
 # (deg(n_i)/ sum( deg(n_j) ) for n_j in set of G nodes )
 

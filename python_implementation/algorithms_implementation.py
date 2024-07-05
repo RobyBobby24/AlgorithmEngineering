@@ -12,6 +12,7 @@ from utility.csv_writer import CsvWriter
 import argparse
 import pdb
 from networkit.graphio import BinaryPartitionReader
+from python_implementation.mytimer import MyTimer
 
 
 # Function for Algorithm
@@ -71,7 +72,7 @@ def compute_community_gateway(graph: Graph, community_graph: Graph, community_no
 
 
 def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
-    # pdb.set_trace() # start debug
+    # pdb.set_trace() # _start debug
     bfs = MultiTargetBFS(graph, node, LBC_nodes.values())
     bfs.run()
     summation_LBC_distances = sum(bfs.getDistances())
@@ -81,49 +82,83 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     return 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
-def community_centrality_std(G, start_time, measure_time_func=None):
+def community_centrality_std(G, measure_time=True):
     # pdb.set_trace()
     times = {}
     community_sets, community_graphs = compute_community(G)  # compute community from graph
     # community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
 
-    if measure_time_func is not None:
-        times["Community computation"] = measure_time_func() - start_time
+    # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
+    nodes = set()
+    for i in range(0, len(community_sets)):
+        nodes = nodes.union(community_sets.getMembers(i))
+        for j in range(i+1, len(community_sets)):
+            assert community_sets.getMembers(i).isdisjoint(community_sets.getMembers(j))
+    assert len(nodes) == G.numberOfNodes()
+
+    if measure_time:
+        times["Community computation"] = current_time
     else:
-        print("community computation: ", time() - start_time)
+        print("community computation: ", current_time)
+
+    MyTimer().resume()
+    # RESUME!!!
 
     max_LBC_community = {}
     gateways = {}
-    # pdb.set_trace() # start debug
+    # pdb.set_trace() # _start debug
     for i in community_graphs.keys():
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
         gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
 
-    if measure_time_func is not None:
-        times["Nodes computation"] = measure_time_func() - start_time
+        assert max_LBC_node in community_sets.getMembers(i) and gateways[i] in community_sets.getMembers(i)
+
+    # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
+    if measure_time:
+        times["Nodes computation"] = current_time
     else:
-        print("nodes_computation: ", time() - start_time)
+        print("nodes_computation: ", current_time)
+    MyTimer().resume()
+    # RESUME!!!
 
     ranking_nodes = []
     for node in G.iterNodes():
         glr_i = compute_GLR(node, G, max_LBC_community, gateways)
         ranking_nodes.append((node, glr_i))
 
-    if measure_time_func is not None:
-        times["GLR computation"] = measure_time_func() - start_time
+    # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
+    if measure_time:
+        times["GLR computation"] = current_time
     else:
-        print("GLR_computation: ", time() - start_time)
+        print("GLR_computation: ", current_time)
+    MyTimer().resume()
+    # RESUME!!!
 
     ranking_nodes.sort(reverse=False, key=lambda item: item[1])
 
-    if measure_time_func is not None:
+    if measure_time:
         return ranking_nodes, times
 
     else:
         return ranking_nodes
 
 # Utility function to manage input/output
+
+def show_file(root: str):
+    for i, gp in enumerate(os.listdir(root)):
+        file = f"{root}/{gp}"
+        if os.path.isdir(file):
+            show_file(file)
+        else:
+            print(f"{i + 1}) {file}")
+
 def get_IO_paths():
     # Read Parameters
     parser = argparse.ArgumentParser(description='Process some parameters.')
@@ -137,8 +172,7 @@ def get_IO_paths():
     flag = args.flag
     # If graph is not passed as args require it as standard input
     if graph_path is None:
-        for i, gp in enumerate(os.listdir("../graphs/")):
-            print(f"{i + 1}) ../graphs/{gp}")
+        show_file("../graphs")
         graph_path = input("Enter the graph path (above you can find some suggestions):")
 
     if result_folder is None:
@@ -176,22 +210,23 @@ if __name__ == "__main__":
     # load graph from path
     G = readGraph(graph_path, Format.METIS)
     # setup time
-    start = process_time()
     measure_time = True
 
     # exec algorithm (save result in centrality_rank, and time in times)
-    centrality_rank, times = community_centrality_std(G, start, process_time)
+    MyTimer(process_time)
+    centrality_rank, times = community_centrality_std(G)
+    total_time = MyTimer().get_elapsed_time()
 
     # compute and print final time and save results
     file_name = graph_path.split("/")[-1]
     if measure_time:
-        times["Total"] = process_time() - start
+        times["Total"] = total_time
         times["Code"] = "python"
         times["Flag"] = flag
-        print(process_time() - start)
+        print(total_time)
         save_results(file_name, centrality_rank, times)
     else:
-        print(process_time() - start)
+        print(total_time)
         save_results(file_name, centrality_rank)
 
 
