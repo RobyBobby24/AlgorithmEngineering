@@ -82,64 +82,32 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     return 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
-def community_centrality_std(G, measure_time=True):
-    # pdb.set_trace()
+def community_centrality_std(G, measure_time=True, check_correctness=False):
     times = {}
+    # Community Computation
     community_sets, community_graphs = compute_community(G)  # compute community from graph
     # community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
 
-    # PAUSE!!!
-    current_time = MyTimer().get_elapsed_time()
-    MyTimer().pause()
-    nodes = set()
-    for i in range(0, len(community_sets)):
-        nodes = nodes.union(community_sets.getMembers(i))
-        for j in range(i+1, len(community_sets)):
-            assert community_sets.getMembers(i).isdisjoint(community_sets.getMembers(j))
-    assert len(nodes) == G.numberOfNodes()
+    _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time, check_correctness)
 
-    if measure_time:
-        times["Community computation"] = current_time
-    else:
-        print("community computation: ", current_time)
-
-    MyTimer().resume()
-    # RESUME!!!
-
+    # Nodes Computation
     max_LBC_community = {}
     gateways = {}
-    # pdb.set_trace() # _start debug
     for i in community_graphs.keys():
         max_LBC_node = btw_max(community_graphs[i])[0]
         max_LBC_community[i] = max_LBC_node
         gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
+        _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness)
 
-        assert max_LBC_node in community_sets.getMembers(i) and gateways[i] in community_sets.getMembers(i)
+    _NODES_COMPUTATION_PAUSE(times, measure_time)
 
-    # PAUSE!!!
-    current_time = MyTimer().get_elapsed_time()
-    MyTimer().pause()
-    if measure_time:
-        times["Nodes computation"] = current_time
-    else:
-        print("nodes_computation: ", current_time)
-    MyTimer().resume()
-    # RESUME!!!
-
+    # GLR Computation
     ranking_nodes = []
     for node in G.iterNodes():
         glr_i = compute_GLR(node, G, max_LBC_community, gateways)
         ranking_nodes.append((node, glr_i))
 
-    # PAUSE!!!
-    current_time = MyTimer().get_elapsed_time()
-    MyTimer().pause()
-    if measure_time:
-        times["GLR computation"] = current_time
-    else:
-        print("GLR_computation: ", current_time)
-    MyTimer().resume()
-    # RESUME!!!
+    _GLR_COMPUTATION_PAUSE(times, measure_time)
 
     ranking_nodes.sort(reverse=False, key=lambda item: item[1])
 
@@ -150,6 +118,52 @@ def community_centrality_std(G, measure_time=True):
         return ranking_nodes
 
 # Utility function to manage input/output
+
+def _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time=True, check_correctness=False):
+    # PAUSE!!!
+    if check_correctness:
+        current_time = MyTimer().get_elapsed_time()
+        MyTimer().pause()
+        nodes = set()
+        for i in range(0, len(community_sets)):
+            nodes = nodes.union(community_sets.getMembers(i))
+            for j in range(i + 1, len(community_sets)):
+                assert community_sets.getMembers(i).isdisjoint(community_sets.getMembers(j))
+        assert len(nodes) == G.numberOfNodes()
+
+        if measure_time:
+            times["Community computation"] = current_time
+        else:
+            print("community computation: ", current_time)
+
+        MyTimer().resume()
+    # RESUME!!!
+
+def _NODES_COMPUTATION_PAUSE(times, measure_time=True):
+    # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
+    if measure_time:
+        times["Nodes computation"] = current_time
+    else:
+        print("nodes_computation: ", current_time)
+    MyTimer().resume()
+    # RESUME!!!
+
+def _GLR_COMPUTATION_PAUSE(times, measure_time=True):
+    # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
+    if measure_time:
+        times["GLR computation"] = current_time
+    else:
+        print("GLR_computation: ", current_time)
+    MyTimer().resume()
+    # RESUME!!!
+
+def _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness=False):
+    if check_correctness:
+        assert max_LBC_node in community_sets.getMembers(i) and gateways[i] in community_sets.getMembers(i)
 
 def show_file(root: str):
     for i, gp in enumerate(os.listdir(root)):
