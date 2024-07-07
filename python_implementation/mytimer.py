@@ -1,4 +1,4 @@
-from time import process_time
+from time import perf_counter
 
 
 class MyTimer:
@@ -6,7 +6,7 @@ class MyTimer:
     _wpause: float
     _pause_sum: float
 
-    def __new__(cls, time_func=process_time):
+    def __new__(cls, time_func=perf_counter):
         if not hasattr(cls, 'instance'):
             cls.instance = super(MyTimer, cls).__new__(cls)
             cls.instance._time_func = time_func

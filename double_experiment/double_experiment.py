@@ -12,9 +12,11 @@ def filter_graph(keyword, root):
 
 
 if __name__ == "__main__":
-    graph_dir = "2expnode"
+    #graph_dir = "2expnode"
+    graph_dir = "Albert"
+    filter_keyword = graph_dir
     root = f"../graphs/{graph_dir}/"
-    graph_paths = filter_graph("2expnode", root)
+    graph_paths = filter_graph(filter_keyword, root)
     language_codes = ["python", "c++"]
     python_executable = sys.executable
     for i, code in enumerate(language_codes):

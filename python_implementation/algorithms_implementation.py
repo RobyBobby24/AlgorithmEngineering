@@ -8,11 +8,11 @@ from networkit.distance import BFS
 from networkit.distance import MultiTargetBFS
 from time import process_time, time
 import os
-from utility.csv_writer import CsvWriter
+from csv_writer import CsvWriter
 import argparse
 import pdb
 from networkit.graphio import BinaryPartitionReader
-from python_implementation.mytimer import MyTimer
+from mytimer import MyTimer
 
 
 # Function for Algorithm
@@ -72,7 +72,6 @@ def compute_community_gateway(graph: Graph, community_graph: Graph, community_no
 
 
 def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
-    # pdb.set_trace() # _start debug
     bfs = MultiTargetBFS(graph, node, LBC_nodes.values())
     bfs.run()
     summation_LBC_distances = sum(bfs.getDistances())
@@ -94,10 +93,11 @@ def community_centrality_std(G, measure_time=True, check_correctness=False):
     max_LBC_community = {}
     gateways = {}
     for i in community_graphs.keys():
-        max_LBC_node = btw_max(community_graphs[i])[0]
-        max_LBC_community[i] = max_LBC_node
-        gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
-        _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness)
+        if len(community_sets.getMembers(i)) != 0:
+            max_LBC_node = btw_max(community_graphs[i])[0]
+            max_LBC_community[i] = max_LBC_node
+            gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
+            _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness)
 
     _NODES_COMPUTATION_PAUSE(times, measure_time)
 
@@ -121,9 +121,9 @@ def community_centrality_std(G, measure_time=True, check_correctness=False):
 
 def _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time=True, check_correctness=False):
     # PAUSE!!!
+    current_time = MyTimer().get_elapsed_time()
+    MyTimer().pause()
     if check_correctness:
-        current_time = MyTimer().get_elapsed_time()
-        MyTimer().pause()
         nodes = set()
         for i in range(0, len(community_sets)):
             nodes = nodes.union(community_sets.getMembers(i))
@@ -131,12 +131,12 @@ def _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time=True, check
                 assert community_sets.getMembers(i).isdisjoint(community_sets.getMembers(j))
         assert len(nodes) == G.numberOfNodes()
 
-        if measure_time:
-            times["Community computation"] = current_time
-        else:
-            print("community computation: ", current_time)
+    if measure_time:
+        times["Community computation"] = current_time
+    else:
+        print("community computation: ", current_time)
 
-        MyTimer().resume()
+    MyTimer().resume()
     # RESUME!!!
 
 def _NODES_COMPUTATION_PAUSE(times, measure_time=True):

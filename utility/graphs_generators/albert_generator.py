@@ -7,8 +7,8 @@ from networkit import writeGraph, Format
 from random import randint
 
 if __name__ == "__main__":
-    output_folder = "../../graphs/"
-    start_node_number = 10
+    output_folder = "../../graphs/albert/"
+    start_node_number = 160
     max_node_number = 30000
 
     number_nodes = start_node_number
@@ -20,6 +20,6 @@ if __name__ == "__main__":
         # The random interval is in percentual to the total number of graph nodes 0%-50%
         graph_generator = BarabasiAlbertGenerator(attachment_nodes, number_nodes)
         G = graph_generator.generate()
-        writeGraph(G, f"{output_folder}DoubleExperiment(n={number_nodes}).graph", Format.METIS)
-        print("genereted: ", f"{output_folder}DoubleExperiment(n={number_nodes}).graph")
+        writeGraph(G, f"{output_folder}Albert(n={number_nodes}, m={G.numberOfEdges()}).graph", Format.METIS)
+        print("genereted: ", f"{output_folder}Albert(n={number_nodes}, m={G.numberOfEdges()}).graph")
         number_nodes *= 2

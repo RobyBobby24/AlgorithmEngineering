@@ -147,11 +147,13 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
     list<node> gatewaysList;
 
     for(auto i = communityGraphs.begin(); i != communityGraphs.end(); i ++ ){
-        pair<node, double> maxLBC_node = AlgorithmsImplementation::btwMax(i->second);
-        //maxLBC_community[i->first] = maxLBC_node;
-        maxLBC_communityList.push_back(maxLBC_node.first);
-        node communityGateway = computeCommunityGateway(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
-        gatewaysList.push_back(communityGateway);
+        if( communitySets->getMembers(i->first).size() != 0){
+            pair<node, double> maxLBC_node = AlgorithmsImplementation::btwMax(i->second);
+            //maxLBC_community[i->first] = maxLBC_node;
+            maxLBC_communityList.push_back(maxLBC_node.first);
+            node communityGateway = computeCommunityGateway(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
+            gatewaysList.push_back(communityGateway);
+        }
     }
 
     elapsed = t_counter->elapsed();
