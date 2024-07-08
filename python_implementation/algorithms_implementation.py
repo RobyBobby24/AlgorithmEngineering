@@ -81,11 +81,14 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     return 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
 
-def community_centrality_std(G, measure_time=True, check_correctness=False):
+def community_centrality_std(G: Graph, measure_time: bool = True, check_correctness: bool = False,
+                             partition_path: str = None):
     times = {}
     # Community Computation
-    community_sets, community_graphs = compute_community(G)  # compute community from graph
-    # community_sets, community_graphs = read_community(G, "../partial_results/community") #load community from file
+    if partition_path is None:
+        community_sets, community_graphs = compute_community(G)  # compute community from graph
+    else:
+        community_sets, community_graphs = read_community(G, partition_path)  # load community from file
 
     _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time, check_correctness)
 
@@ -117,6 +120,7 @@ def community_centrality_std(G, measure_time=True, check_correctness=False):
     else:
         return ranking_nodes
 
+
 # Utility function to manage input/output
 
 def _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time=True, check_correctness=False):
@@ -139,6 +143,7 @@ def _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time=True, check
     MyTimer().resume()
     # RESUME!!!
 
+
 def _NODES_COMPUTATION_PAUSE(times, measure_time=True):
     # PAUSE!!!
     current_time = MyTimer().get_elapsed_time()
@@ -149,6 +154,7 @@ def _NODES_COMPUTATION_PAUSE(times, measure_time=True):
         print("nodes_computation: ", current_time)
     MyTimer().resume()
     # RESUME!!!
+
 
 def _GLR_COMPUTATION_PAUSE(times, measure_time=True):
     # PAUSE!!!
@@ -161,9 +167,11 @@ def _GLR_COMPUTATION_PAUSE(times, measure_time=True):
     MyTimer().resume()
     # RESUME!!!
 
+
 def _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness=False):
     if check_correctness:
         assert max_LBC_node in community_sets.getMembers(i) and gateways[i] in community_sets.getMembers(i)
+
 
 def show_file(root: str):
     for i, gp in enumerate(os.listdir(root)):
@@ -173,17 +181,20 @@ def show_file(root: str):
         else:
             print(f"{i + 1}) {file}")
 
+
 def get_IO_paths():
     # Read Parameters
     parser = argparse.ArgumentParser(description='Process some parameters.')
     parser.add_argument('-g', '--graph', type=str, help='Path to the graph file', required=False)
     parser.add_argument('-r', '--result-folder', type=str, help='Path of result folder', required=False)
     parser.add_argument('-f', '--flag', type=str, help='A flag to mark the result', required=False)
+    parser.add_argument('-p', '--partition', type=str, help='Path to the partition file', required=False)
     args = parser.parse_args()
 
     graph_path = args.graph
     result_folder = args.result_folder
     flag = args.flag
+    partition_path = args.partition
     # If graph is not passed as args require it as standard input
     if graph_path is None:
         show_file("../graphs")
@@ -195,7 +206,7 @@ def get_IO_paths():
     if flag is None:
         flag = "prova"
 
-    return graph_path, result_folder, flag
+    return graph_path, result_folder, flag, partition_path
 
 
 def save_results(file_name, centrality_rank, times=None):
@@ -217,9 +228,10 @@ def save_results(file_name, centrality_rank, times=None):
             file_open_mode="a"
         )
 
+
 if __name__ == "__main__":
 
-    graph_path, result_folder, flag = get_IO_paths()
+    graph_path, result_folder, flag, partition_path = get_IO_paths()
 
     # load graph from path
     G = readGraph(graph_path, Format.METIS)
@@ -227,9 +239,14 @@ if __name__ == "__main__":
     measure_time = True
 
     # exec algorithm (save result in centrality_rank, and time in times)
-    MyTimer(process_time)
-    centrality_rank, times = community_centrality_std(G)
-    total_time = MyTimer().get_elapsed_time()
+    if partition_path is not None:
+        MyTimer(process_time)
+        centrality_rank, times = community_centrality_std(G, partition_path=partition_path)
+        total_time = MyTimer().get_elapsed_time()
+    else:
+        MyTimer(process_time)
+        centrality_rank, times = community_centrality_std(G)
+        total_time = MyTimer().get_elapsed_time()
 
     # compute and print final time and save results
     file_name = graph_path.split("/")[-1]
@@ -242,6 +259,3 @@ if __name__ == "__main__":
     else:
         print(total_time)
         save_results(file_name, centrality_rank)
-
-
-

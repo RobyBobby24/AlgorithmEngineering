@@ -127,9 +127,16 @@ bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, p
     return node1.second < node2.second ;
 }
 
-vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap){
-    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
-    //pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, "../partial_results/community");
+vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap, string partitionPath){
+    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs;
+    if( partitionPath == "" ){
+        plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
+    }
+    else{
+        plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, partitionPath);
+    }
+
+    //pair<Partition*,  map<int, Graph*>>
     Partition* communitySets = plmCommunitiesAndGraphs.first;
     map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
 

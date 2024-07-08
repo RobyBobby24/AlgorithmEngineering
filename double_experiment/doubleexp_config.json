@@ -1,0 +1,16 @@
+{
+  "graphs_dir": "../graphs/2expnode/",
+  "log_file": "./log.txt",
+  "partition_dir": "../partial_results/partitions/",
+  "filter_world": "2expnode",
+  "result_flag": "2expnode",
+  "load_partition": true,
+  "languages_codes": {
+    "python" : {
+      "exe_path": "../python_implementation/algorithms_implementation.py"
+    },
+    "c++" : {
+      "exe_path": "../c++_implementation/main"
+    }
+  }
+}

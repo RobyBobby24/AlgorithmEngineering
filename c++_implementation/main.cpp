@@ -50,7 +50,8 @@ int main(int argc, char** argv) {
 
 	desc.add_options()
 	("graph_location,g", po::value<std::string>(), "Input Graph File Location")
-	("flag,f", po::value<std::string>(), "Input Flag String");
+	("flag,f", po::value<std::string>(), "Input Flag String")
+	("partitionPath,p", po::value<std::string>(), "Input Partition File Location");
 
 
 	po::variables_map vm;
@@ -59,7 +60,8 @@ int main(int argc, char** argv) {
 
 	int source = -1;
 	string graph_location;
-	std::string flag;
+	string flag;
+	string partitionPath = "";
 
 	if (vm.empty()){
 			cout << desc << "\n";
@@ -71,6 +73,9 @@ int main(int argc, char** argv) {
 
     if (vm.count("flag")) {
             flag = vm["flag"].as<std::string>();
+    }
+    if (vm.count("partitionPath")) {
+            partitionPath = vm["partitionPath"].as<std::string>();
     }
 
 	if(graph_location == ""){
@@ -96,7 +101,7 @@ int main(int argc, char** argv) {
     elapsedMap->insert({"Graph", fileName});
     elapsedMap->insert({"Flag", flag});
     // algorithm execution
-    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap);
+    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap, partitionPath);
 
     // save results
     string labels[2] = {"Node", "Centrality Degree"};

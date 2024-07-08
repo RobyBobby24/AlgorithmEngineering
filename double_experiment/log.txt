@@ -1,92 +1,26 @@
 STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
-8.171875
-{'Community computation': 0.6875, 'Nodes computation': 3.03125, 'GLR computation': 8.171875, 'Total': 8.171875, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=10240, m=50000).graph'}
+Start Algorithm
+number of nodes: 10240
+community computation elapsed time: 0.569579
+nodes computation elapsed time: 2.90201
+GLR computation elapsed time: 398.598
+Total elapsed time: 398.6
 ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=5000).graph):
-1.171875
-{'Community computation': 0.03125, 'Nodes computation': 0.0625, 'GLR computation': 1.171875, 'Total': 1.171875, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=1280, m=5000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=1280, m=5000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=10240, m=50000) from METIS file: 2expnode(n=10240, m=50000)
+[INFO ]: 
+[DONE]
+
 STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
-1.359375
-{'Community computation': 0.0625, 'Nodes computation': 0.234375, 'GLR computation': 1.359375, 'Total': 1.359375, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=1280, m=50000).graph'}
+Start Algorithm
+number of nodes: 1280
+community computation elapsed time: 0.266365
+nodes computation elapsed time: 0.530744
+GLR computation elapsed time: 13.6555
+Total elapsed time: 13.6557
 ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=160, m=5000).graph):
-0.8125
-{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.8125, 'Total': 0.8125, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=160, m=5000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=160, m=5000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
-26.234375
-{'Community computation': 1.328125, 'Nodes computation': 13.625, 'GLR computation': 26.234375, 'Total': 26.234375, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=20480, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=2560, m=5000).graph):
-1.140625
-{'Community computation': 0.015625, 'Nodes computation': 0.1875, 'GLR computation': 1.140625, 'Total': 1.140625, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=2560, m=5000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=2560, m=5000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=2560, m=50000).graph):
-2.3125
-{'Community computation': 0.109375, 'Nodes computation': 0.984375, 'GLR computation': 2.3125, 'Total': 2.3125, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=2560, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=2560, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=320, m=5000).graph):
-0.890625
-{'Community computation': 0.03125, 'Nodes computation': 0.03125, 'GLR computation': 0.890625, 'Total': 0.890625, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=320, m=5000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=320, m=5000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
-8.25
-{'Community computation': 1.0, 'Nodes computation': 2.875, 'GLR computation': 8.25, 'Total': 8.25, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=10240, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
-1.734375
-{'Community computation': 0.0625, 'Nodes computation': 0.5625, 'GLR computation': 1.734375, 'Total': 1.734375, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=1280, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
-35.75
-{'Community computation': 0.859375, 'Nodes computation': 22.046875, 'GLR computation': 35.75, 'Total': 35.75, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=20480, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=2560, m=50000).graph):
-2.546875
-{'Community computation': 0.109375, 'Nodes computation': 0.8125, 'GLR computation': 2.546875, 'Total': 2.546875, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=2560, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=2560, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=40960, m=50000).graph):
-119.484375
-{'Community computation': 1.34375, 'Nodes computation': 91.625, 'GLR computation': 119.484375, 'Total': 119.484375, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=40960, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=40960, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=5120, m=50000).graph):
-3.40625
-{'Community computation': 0.34375, 'Nodes computation': 1.78125, 'GLR computation': 3.40625, 'Total': 3.40625, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=5120, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=5120, m=50000).graph):
-STANDARD OUTPUT (../graphs/2expnode/2expnode(n=640, m=50000).graph):
-1.3125
-{'Community computation': 0.03125, 'Nodes computation': 0.078125, 'GLR computation': 1.3125, 'Total': 1.3125, 'Code': 'python', 'Flag': '2expnode', 'Graph': '2expnode(n=640, m=50000).graph'}
-ERROR(../graphs/2expnode/2expnode(n=640, m=50000).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=10240, m=20478).graph):
-19.9375
-{'Community computation': 0.265625, 'Nodes computation': 2.421875, 'GLR computation': 19.9375, 'Total': 19.9375, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=10240, m=20478).graph'}
-ERROR(../graphs/Albert/Albert(n=10240, m=20478).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=1280, m=8918).graph):
-1.5625
-{'Community computation': 0.0, 'Nodes computation': 0.03125, 'GLR computation': 1.5625, 'Total': 1.5625, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=1280, m=8918).graph'}
-ERROR(../graphs/Albert/Albert(n=1280, m=8918).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=160, m=1078).graph):
-0.234375
-{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.21875, 'Total': 0.234375, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=160, m=1078).graph'}
-ERROR(../graphs/Albert/Albert(n=160, m=1078).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=20480, m=81908).graph):
-165.65625
-{'Community computation': 0.9375, 'Nodes computation': 40.609375, 'GLR computation': 165.65625, 'Total': 165.65625, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=20480, m=81908).graph'}
-ERROR(../graphs/Albert/Albert(n=20480, m=81908).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=2560, m=17878).graph):
-3.625
-{'Community computation': 0.0, 'Nodes computation': 0.703125, 'GLR computation': 3.625, 'Total': 3.625, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=2560, m=17878).graph'}
-ERROR(../graphs/Albert/Albert(n=2560, m=17878).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=320, m=638).graph):
-0.65625
-{'Community computation': 0.0, 'Nodes computation': 0.03125, 'GLR computation': 0.65625, 'Total': 0.65625, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=320, m=638).graph'}
-ERROR(../graphs/Albert/Albert(n=320, m=638).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=5120, m=15354).graph):
-6.359375
-{'Community computation': 0.046875, 'Nodes computation': 0.65625, 'GLR computation': 6.359375, 'Total': 6.359375, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=5120, m=15354).graph'}
-ERROR(../graphs/Albert/Albert(n=5120, m=15354).graph):
-STANDARD OUTPUT (../graphs/Albert/Albert(n=640, m=3180).graph):
-1.25
-{'Community computation': 0.03125, 'Nodes computation': 0.03125, 'GLR computation': 1.25, 'Total': 1.25, 'Code': 'python', 'Flag': 'Albert', 'Graph': 'Albert(n=640, m=3180).graph'}
-ERROR(../graphs/Albert/Albert(n=640, m=3180).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=1280, m=50000) from METIS file: 2expnode(n=1280, m=50000)
+[INFO ]: 
+[DONE]
+
