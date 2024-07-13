@@ -38,6 +38,12 @@ class DoubleExperimentExecutor:
         else:
             return [exe_file, "-g", graph, "-f", self._configuration["result_flag"]]
 
+    def read_config(self, *keys):
+        result = self._configuration
+        for key in keys:
+            result = result[key]
+        return result
+
     def run(self, code_language, get_interpeter=None):
         graph_partitions = self.strategy(self)
         for graph, partition in graph_partitions.items():

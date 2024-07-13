@@ -254,7 +254,7 @@ if __name__ == "__main__":
         times["Total"] = total_time
         times["Code"] = "python"
         times["Flag"] = flag
-        times["Partition"] = partition_path
+        times["Partition"] = partition_path if partition_path is not None else "None"
         print(total_time)
         save_results(file_name, centrality_rank, times)
     else:
