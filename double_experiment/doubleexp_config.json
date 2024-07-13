@@ -3,8 +3,25 @@
   "log_file": "./log.txt",
   "partition_dir": "../partial_results/partitions/",
   "filter_world": "2expnode",
-  "result_flag": "2expnode",
+  "result_flag": "2expnode(readPartition)",
   "load_partition": true,
+  "strategy_name": "partition_graph",
+  "strategies": {
+    "partition_graph": {
+      "graphs_dir": "../graphs/2expnode/",
+      "partition_dir": "../partial_results/partitions/"
+    },
+    "graph": {
+      "graphs_dir": "../graphs/2expnode/"
+    },
+    "partition": {
+      "graph_path": "../graphs/2expnode/2expnode(n=10240, m=50000).graph",
+      "partition_dir": "../partial_results/partitions/"
+    }
+  },
+
+
+
   "languages_codes": {
     "python" : {
       "exe_path": "../python_implementation/algorithms_implementation.py"
