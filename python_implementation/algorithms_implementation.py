@@ -224,7 +224,7 @@ def save_results(file_name, centrality_rank, times=None):
         CsvWriter().write(
             [times],
             f"{result_folder}/time",
-            ["Code", "Graph", "Flag", "Community computation", "Nodes computation", "GLR computation", "Total"],
+            ["Code", "Graph", "Partition", "Flag", "Community computation", "Nodes computation", "GLR computation", "Total"],
             file_open_mode="a"
         )
 
@@ -254,6 +254,7 @@ if __name__ == "__main__":
         times["Total"] = total_time
         times["Code"] = "python"
         times["Flag"] = flag
+        times["Partition"] = partition_path
         print(total_time)
         save_results(file_name, centrality_rank, times)
     else:

@@ -125,3 +125,37 @@ STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
 1.65625
 {'Community computation': 0.015625, 'Nodes computation': 0.1875, 'GLR computation': 1.65625, 'Total': 1.65625, 'Code': 'python', 'Flag': '2expnode(readPartition)', 'Graph': '2expnode(n=1280, m=50000).graph'}
 ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+Start Algorithm
+number of nodes: 10240
+community computation elapsed time: 0.672083
+nodes computation elapsed time: 2.91168
+GLR computation elapsed time: 397.014
+Total elapsed time: 397.016
+ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=10240, m=50000) from METIS file: 2expnode(n=10240, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+Start Algorithm
+number of nodes: 1280
+community computation elapsed time: 0.397282
+nodes computation elapsed time: 0.675584
+GLR computation elapsed time: 14.3403
+Total elapsed time: 14.3405
+ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=1280, m=50000) from METIS file: 2expnode(n=1280, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+41.625
+{'Community computation': 0.109375, 'Nodes computation': 3.734375, 'GLR computation': 41.625, 'Total': 41.625, 'Code': 'python', 'Flag': '2expnode(readPartition)', 'Partition': '../partial_results/partitions//2expnode(n=10240, m=50000)', 'Graph': '2expnode(n=10240, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+1.6875
+{'Community computation': 0.0, 'Nodes computation': 0.203125, 'GLR computation': 1.6875, 'Total': 1.6875, 'Code': 'python', 'Flag': '2expnode(readPartition)', 'Partition': '../partial_results/partitions//2expnode(n=1280, m=50000)', 'Graph': '2expnode(n=1280, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):

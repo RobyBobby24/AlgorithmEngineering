@@ -100,6 +100,12 @@ int main(int argc, char** argv) {
     elapsedMap->insert({"Code", "C++"});
     elapsedMap->insert({"Graph", fileName});
     elapsedMap->insert({"Flag", flag});
+    if(partitionPath == ""){
+        elapsedMap->insert({"Partition", "None"});
+    }
+    else {
+        elapsedMap->insert({"Partition", partitionPath});
+    }
     // algorithm execution
     vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap, partitionPath);
 
@@ -117,7 +123,7 @@ int main(int argc, char** argv) {
 
 
 // save times
-    string labelsTime[7] = {"Code", "Graph", "Flag", "Community computation","Nodes computation", "GLR computation", "Total"};
+    string labelsTime[8] = {"Code", "Graph", "Partition", "Flag", "Community computation","Nodes computation", "GLR computation", "Total"};
     vector<map<string, string>> elapsedMapCsv;
     elapsedMapCsv.push_back(*elapsedMap);
     csvWriter->write(
