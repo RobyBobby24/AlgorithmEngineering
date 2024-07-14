@@ -46,8 +46,8 @@ class DoubleExperimentExecutor:
 
     def run(self, code_language, get_interpeter=None):
         graph_partitions = self.strategy(self)
-        for graph, partition in graph_partitions.items():
-            print("Start execution of algorithms applied for graph", graph)
+        for graph, partition in graph_partitions:
+            print("Start execution of algorithms applied for graph", graph, "with partition", partition)
             if get_interpeter != None:
                 cmd = self._interpeter_cmd(graph, partition, code_language, get_interpeter)
             else:

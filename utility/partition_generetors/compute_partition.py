@@ -1,10 +1,9 @@
 from typing import Callable
 from networkit import community as comity
-from networkit import readGraph
-from networkit import Format
 import json
 from networkit.graphio import BinaryPartitionWriter
 import os
+import strategies
 
 
 class PartitionGenerator:
@@ -16,6 +15,7 @@ class PartitionGenerator:
             cls.instance._config_file = config_file
             with open(config_file, 'r') as file:
                 cls.instance._configuration = json.load(file)
+            cls.instance.strategy = getattr(strategies, f"{cls.instance._configuration['strategy_name']}_strategy")
         return cls.instance
 
     def reload_config(self):
@@ -34,30 +34,21 @@ class PartitionGenerator:
                 paths.append(current_path)
         return paths
 
-    def run(self, gen_func: Callable):
-        paths = self._get_graphs_paths(self._configuration["graphs_path"])
-        for path in paths:
-            print("Start generation of partition for", path)
-            G = readGraph(path, Format.METIS)
-            partition = gen_func(G)
+    def read_config(self, *keys):
+        result = self._configuration
+        for key in keys:
+            result = result[key]
+        return result
+
+    def run(self):
+        gen_func, parameters, output_paths = self.strategy(self)
+        for output_path, parameter in zip(output_paths, parameters):
+            partition = gen_func(*parameter)
             partition_writer = BinaryPartitionWriter()
-            graph_name = path.split('/')[-1]
-            if graph_name.endswith(".graph"):
-                graph_name = graph_name[:-len(".graph")]
-            partition_writer.write(partition, os.path.join(self._configuration["output_folder"], graph_name))
-            print("End generation of partition for", path)
-
-
-def PLM_partition(G):
-    plm_community_algo = comity.PLM(G, True)
-    plm_community_algo.run()
-    return plm_community_algo.getPartition()
-
-
-def BalancedClustering_partition(G, k):
-    partition_generator = comity.ClusteringGenerator()
-    return partition_generator.makeContinuousBalancedClustering(G, k)
+            output_dir = os.path.dirname(output_path)
+            os.makedirs(output_dir, exist_ok=True)
+            partition_writer.write(partition, output_path)
 
 
 if __name__ == '__main__':
-    PartitionGenerator().run(PLM_partition)
+    PartitionGenerator().run()

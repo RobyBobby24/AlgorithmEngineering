@@ -1,26 +1,23 @@
 {
   "graphs_dir": "../graphs/2expnode/",
   "log_file": "./log.txt",
-  "filter_world": "2expnode",
+  "filter_world": "",
   "result_flag": "2expnode(readPartition)",
   "load_partition": true,
-  "strategy_name": "graph",
+  "strategy_name": "partition",
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
-      "partition_dir": "../partial_results/partitions/"
+      "partition_dir": "../partial_results/partitions/2expnode/"
     },
     "graph": {
       "graphs_dir": "../graphs/2expnode/"
     },
     "partition": {
-      "graph_path": "../graphs/2expnode/2expnode(n=10240, m=50000).graph",
-      "partition_dir": "../partial_results/partitions/"
+      "graph_path": "../graphs/2expnode/2expnode(n=20480, m=50000).graph",
+      "partition_dir": "../partial_results/partitions/2expnode(n=20480, m=50000)/"
     }
   },
-
-
-
   "languages_codes": {
     "python" : {
       "exe_path": "../python_implementation/algorithms_implementation.py"

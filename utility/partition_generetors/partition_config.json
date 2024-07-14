@@ -1,5 +1,16 @@
 {
-  "graphs_path": "../../graphs/2expnode",
   "filter_keyword": "2expnode",
-  "output_folder": "../../partial_results/partitions"
+  "strategy_name": "BalancedClustering",
+  "strategies": {
+    "PLM": {
+      "graphs_path": "../../graphs/2expnode",
+      "output_folder": "../../partial_results/partitions/2expnode"
+    },
+    "BalancedClustering": {
+      "graphs_path": "../../graphs/2expnode/2expnode(n=20480, m=50000).graph",
+      "min_number_communities": 2,
+      "max_number_communities": 128,
+      "output_folder": "../../partial_results/partitions"
+    }
+  }
 }
