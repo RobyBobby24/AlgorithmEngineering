@@ -52,12 +52,13 @@ def PLM_strategy(obj):
     return PLM_partition, parameters, output_names
 
 
-def BalancedClustering_strategy(obj):
+def BalancedClusteringDoubling_strategy(obj):
+    strategy_name = "BalancedClusteringDoubling"
     # Read config (graphs_path, output_folder,  min_number_communities, max_number_communities)
-    paths = compute_graphs_paths(obj, obj.read_config("strategies", "BalancedClustering", "graphs_path"))
-    output_dir = obj.read_config("strategies", "BalancedClustering", "output_folder")
-    number_community = obj.read_config("strategies", "BalancedClustering", "min_number_communities")
-    max_number_communities = obj.read_config("strategies", "BalancedClustering", "max_number_communities")
+    paths = compute_graphs_paths(obj, obj.read_config("strategies", strategy_name, "graphs_path"))
+    output_dir = obj.read_config("strategies", strategy_name, "output_folder")
+    number_community = obj.read_config("strategies", strategy_name, "min_number_communities")
+    max_number_communities = obj.read_config("strategies", strategy_name, "max_number_communities")
 
     # doubling number of community
     numbers_community = []
