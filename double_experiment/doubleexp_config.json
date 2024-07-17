@@ -2,9 +2,9 @@
   "graphs_dir": "../graphs/2expnode/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expnode(readPartition)",
+  "result_flag": "2expnode",
   "load_partition": true,
-  "strategy_name": "partition",
+  "strategy_name": "graph",
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
