@@ -6,6 +6,7 @@ from networkit.generators import BarabasiAlbertGenerator
 from networkit import writeGraph, Format
 from random import randint
 from GraphGenerator import GraphGenerator
+import os
 
 class AlbertGraphGenerator(GraphGenerator):
     start_node_number: int
@@ -27,6 +28,8 @@ class AlbertGraphGenerator(GraphGenerator):
             # The random interval is in percentual to the total number of graph nodes 0%-50%
             graph_generator = BarabasiAlbertGenerator(attachment_nodes, node_number)
             G = graph_generator.generate()
+            if not os.path.exists(self.result_folder):
+                os.makedirs(self.result_folder)
             writeGraph(G, f"{self.result_folder}/{self.graph_flag}(n={node_number}, m={G.numberOfEdges()}).graph", Format.METIS)
             print("genereted: ", f"{self.result_folder}/{self.graph_flag}(n={node_number}, m={G.numberOfEdges()}).graph")
             node_number *= self.doubling_n_factor

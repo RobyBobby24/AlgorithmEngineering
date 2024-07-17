@@ -2,6 +2,7 @@ import networkit as nk
 from networkit import writeGraph, Format
 from random import choice, randint
 from GraphGenerator import GraphGenerator
+import os
 import pdb
 
 def double_exp_generator(n : int, m: int, connect=True):
@@ -57,11 +58,10 @@ class StdGraphGenerator(GraphGenerator):
         while generate and numberOfGraph < self.max_number_of_graph:
             try:
                 G = double_exp_generator(self.n, self.m)
-                writeGraph(G,
-                           f"{self.result_folder}/{self.graph_flag}(n={self.n}, m={self.m}).graph",
-                           Format.METIS)
-                print("genereted: ",
-                      f"{self.result_folder}/{self.graph_flag}(n={self.n}, m={self.m}).graph")
+                if not os.path.exists(self.result_folder):
+                    os.makedirs(self.result_folder)
+                writeGraph(G, f"{self.result_folder}/{self.graph_flag}(n={self.n}, m={self.m}).graph", Format.METIS)
+                print("genereted: ", f"{self.result_folder}/{self.graph_flag}(n={self.n}, m={self.m}).graph")
 
                 self.n *= self.doubling_n_factor
                 self.m *= self.doubling_m_factor
