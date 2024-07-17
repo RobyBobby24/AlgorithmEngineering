@@ -130,7 +130,7 @@ int main(int argc, char** argv) {
             elapsedMapCsv,
             "../results/time",
             labelsTime,
-            7,
+            8,
             ios::app);
 
 
