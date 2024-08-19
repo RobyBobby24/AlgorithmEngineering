@@ -75,3 +75,21 @@ def BalancedClusteringDoubling_strategy(obj):
         graph_name = os.path.basename(path)[:-len('.graph')]
         output_names += [f"{output_dir}/{graph_name}/partition{number_community}" for number_community in numbers_community]
     return BalancedClustering_partition, parameters, output_names
+
+
+def BalancedClustering_strategy(obj):
+    strategy_name = "BalancedClustering"
+    # Read config (graphs_path, output_folder,  min_number_communities, max_number_communities)
+    paths = compute_graphs_paths(obj, obj.read_config("strategies", strategy_name, "graphs_path"))
+    output_dir = obj.read_config("strategies", strategy_name, "output_folder")
+    number_community = obj.read_config("strategies", strategy_name, "number_communities")
+
+    # set parameter to pass to the generator
+    parameters = [[path, number_community] for path in paths]
+
+    # compute output files path
+    output_names = []
+    for path in paths:
+        graph_name = os.path.basename(path)[:-len('.graph')]
+        output_names.append(f"{output_dir}/partition{number_community}/{graph_name}")
+    return BalancedClustering_partition, parameters, output_names
