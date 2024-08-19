@@ -1,6 +1,6 @@
 {
   "filter_keyword": "2expnode",
-  "strategy_name": "BalancedClustering",
+  "strategy_name": "BalancedClusteringDoubling",
   "strategies": {
     "PLM": {
       "graphs_path": "../../graphs/2expnode",
