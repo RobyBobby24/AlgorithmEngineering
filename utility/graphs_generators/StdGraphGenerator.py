@@ -28,7 +28,7 @@ def double_exp_generator(n : int, m: int, connect=True):
         while len(nodes) > 0 and number_edges < m:
             v = nodes.pop(randint(0, len(nodes)-1))
             v_neighbors = [neighbor for neighbor in G.iterNeighbors(v)]
-            possible_nodes = [node for node in G.iterNodes() if node not in v_neighbors]
+            possible_nodes = [node for node in G.iterNodes() if node not in v_neighbors and node != v]
             if len(possible_nodes) > 0:
                 u = choice(possible_nodes)
                 G.addEdge(u, v)
