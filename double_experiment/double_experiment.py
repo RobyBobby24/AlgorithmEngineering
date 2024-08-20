@@ -24,11 +24,16 @@ class DoubleExperimentExecutor:
     def _interpeter_cmd(self, graph, partition, code_language, interpeter_func):
         interpeter_executable = interpeter_func()
         exe_file = self._configuration['languages_codes'][code_language]["exe_path"]
+        multithreading = self._configuration['languages_codes'][code_language]['multithreading']
+        cmd = [interpeter_executable, exe_file, "-g", graph, "-f", self._configuration["result_flag"]]
         if partition is not None:
             print("read partition mode")
-            return [interpeter_executable, exe_file, "-g", graph, "-f", self._configuration["result_flag"], "-p", partition]
-        else:
-            return [interpeter_executable, exe_file, "-g", graph, "-f", self._configuration["result_flag"]]
+            cmd += ["-p", partition]
+        if multithreading:
+            print("multithreading mode")
+            cmd += ["-t"]
+
+        return cmd
 
     def _compiled_cmd(self, graph, partition, code_language):
         exe_file = self._configuration['languages_codes'][code_language]["exe_path"]

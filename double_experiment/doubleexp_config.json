@@ -2,7 +2,7 @@
   "graphs_dir": "../graphs/2expedge/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expedge",
+  "result_flag": "prova",
   "load_partition": true,
   "strategy_name": "graph",
   "strategies": {
@@ -20,7 +20,8 @@
   },
   "languages_codes": {
     "python" : {
-      "exe_path": "../python_implementation/algorithms_implementation.py"
+      "exe_path": "../python_implementation/algorithms_implementation.py",
+      "multithreading": true
     },
     "c++" : {
       "exe_path": "../c++_implementation/main"

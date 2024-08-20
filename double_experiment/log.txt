@@ -609,3 +609,123 @@ ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
 [DONE]
 
 [33m[WARN ][0m: [33mmove phase aborted after 32 iterations[0m
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+1.0
+{'Community computation': 0.015625, 'Nodes computation': 0.03125, 'GLR computation': 1.0, 'Total': 1.0, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+1.125
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 1.125, 'Total': 1.125, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+2.984375
+{'Community computation': 0.1875, 'Nodes computation': 0.375, 'GLR computation': 2.984375, 'Total': 2.984375, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=163584).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=20448).graph):
+1.578125
+{'Community computation': 0.0, 'Nodes computation': 0.046875, 'GLR computation': 1.578125, 'Total': 1.578125, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=20448).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=20448).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=2556).graph):
+1.203125
+{'Community computation': 0.015625, 'Nodes computation': 0.015625, 'GLR computation': 1.203125, 'Total': 1.203125, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=2556).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=40896).graph):
+1.484375
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 1.484375, 'Total': 1.484375, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=40896).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=40896).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=5112).graph):
+1.296875
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 1.296875, 'Total': 1.296875, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=5112).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=5112).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=639).graph):
+1.0
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 1.0, 'Total': 1.0, 'Code': 'python', 'Flag': '2expedge', 'Partition': 'None', 'Graph': '2expedge(n=640, m=639).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=639).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+1.03125
+{'Community computation': 0.015625, 'Nodes computation': 0.015625, 'GLR computation': 1.03125, 'Total': 1.03125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+1.21875
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 1.21875, 'Total': 1.21875, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+Multi-threading
+1.15625
+{'Community computation': 0.03125, 'Nodes computation': 0.03125, 'GLR computation': 1.15625, 'Total': 1.15625, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+Multi-threading
+0.78125
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.78125, 'Total': 0.78125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+Multi-threading
+3.25
+{'Community computation': 0.0625, 'Nodes computation': 0.21875, 'GLR computation': 3.25, 'Total': 3.25, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=163584).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=20448).graph):
+Multi-threading
+1.078125
+{'Community computation': 0.015625, 'Nodes computation': 0.015625, 'GLR computation': 1.078125, 'Total': 1.078125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=20448).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=20448).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=2556).graph):
+Multi-threading
+0.96875
+{'Community computation': 0.015625, 'Nodes computation': 0.015625, 'GLR computation': 0.96875, 'Total': 0.96875, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=2556).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=40896).graph):
+Multi-threading
+1.234375
+{'Community computation': 0.0, 'Nodes computation': 0.03125, 'GLR computation': 1.234375, 'Total': 1.234375, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=40896).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=40896).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=5112).graph):
+Multi-threading
+1.171875
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 1.171875, 'Total': 1.171875, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=5112).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=5112).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+Multi-threading
+1.21875
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 1.21875, 'Total': 1.21875, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+Multi-threading
+0.828125
+{'Community computation': 0.0, 'Nodes computation': 0.015625, 'GLR computation': 0.828125, 'Total': 0.828125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+Multi-threading
+3.390625
+{'Community computation': 0.078125, 'Nodes computation': 0.34375, 'GLR computation': 3.390625, 'Total': 3.390625, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=163584).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+siiiiiiiiiiiiiiiiiiiiii True <class 'bool'>
+Multi-threading
+1.0
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 1.0, 'Total': 1.0, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+siiiiiiiiiiiiiiiiiiiiii True <class 'bool'>
+Multi-threading
+0.84375
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.84375, 'Total': 0.84375, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+siiiiiiiiiiiiiiiiiiiiii True <class 'bool'>
+Multi-threading
+3.640625
+{'Community computation': 0.03125, 'Nodes computation': 0.3125, 'GLR computation': 3.640625, 'Total': 3.640625, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=163584).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=20448).graph):
+siiiiiiiiiiiiiiiiiiiiii True <class 'bool'>
+Multi-threading
+1.15625
+{'Community computation': 0.015625, 'Nodes computation': 0.046875, 'GLR computation': 1.15625, 'Total': 1.15625, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=20448).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=20448).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=2556).graph):
+siiiiiiiiiiiiiiiiiiiiii True <class 'bool'>
+Multi-threading
+0.953125
+{'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.953125, 'Total': 0.953125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=2556).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
