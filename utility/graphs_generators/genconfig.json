@@ -1,12 +1,12 @@
 {
   "generator": "StdGraphGenerator",
   "StdGraphGenerator": {
-    "graph_flag": "2expnode",
-    "result_folder": "../../graphs/2expnode",
+    "graph_flag": "2expedge",
+    "result_folder": "../../graphs/2expedge",
     "n": 640,
-    "m": 50000,
-    "doubling_n_factor": 2,
-    "doubling_m_factor": 1,
+    "m": 639,
+    "doubling_n_factor": 1,
+    "doubling_m_factor": 2,
     "max_number_of_graph": 10
   },
   "AlbertGraphGenerator": {
@@ -16,3 +16,4 @@
       "max_node_number": 30000
   }
 }
+

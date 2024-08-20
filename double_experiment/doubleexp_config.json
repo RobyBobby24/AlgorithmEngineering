@@ -1,17 +1,17 @@
 {
-  "graphs_dir": "../graphs/2expnode/",
+  "graphs_dir": "../graphs/2expedge/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expnodecommunity",
+  "result_flag": "2expedge",
   "load_partition": true,
-  "strategy_name": "partition",
+  "strategy_name": "graph",
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
       "partition_dir": "../partial_results/partitions/partition10/"
     },
     "graph": {
-      "graphs_dir": "../graphs/2expnode/"
+      "graphs_dir": "../graphs/2expedge/"
     },
     "partition": {
       "graph_path": "../graphs/2expnode/2expnode(n=20480, m=50000).graph",
