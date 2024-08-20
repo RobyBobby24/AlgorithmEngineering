@@ -729,3 +729,38 @@ Multi-threading
 0.953125
 {'Community computation': 0.0, 'Nodes computation': 0.0, 'GLR computation': 0.953125, 'Total': 0.953125, 'Code': 'python', 'Flag': 'prova', 'Partition': 'None', 'Graph': '2expedge(n=640, m=2556).graph'}
 ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=5120, m=50000).graph):
+Multi-threading
+27.28027682
+{'Community computation': 0.3032353379999999, 'Nodes computation': 1.0101102990000002, 'GLR computation': 27.27618982, 'Total': 27.28027682, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=5120, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=5120, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+Multi-threading
+109.424649215
+{'Community computation': 0.32190774599999994, 'Nodes computation': 1.818550649, 'GLR computation': 109.41221227599999, 'Total': 109.424649215, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=10240, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=640, m=50000).graph):
+Multi-threading
+2.1012078479999996
+{'Community computation': 0.011161136999999988, 'Nodes computation': 0.032136673000000116, 'GLR computation': 2.100404246, 'Total': 2.1012078479999996, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=640, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=640, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=40960, m=50000).graph):
+Multi-threading
+1177.435039172
+{'Community computation': 0.696551167, 'Nodes computation': 21.669229616, 'GLR computation': 1177.3599421780002, 'Total': 1177.435039172, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=40960, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=40960, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=2560, m=50000).graph):
+Multi-threading
+16.047833083
+{'Community computation': 0.03731307400000006, 'Nodes computation': 0.209779728, 'GLR computation': 16.044993741000003, 'Total': 16.047833083, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=2560, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=2560, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+Multi-threading
+3.1790749820000004
+{'Community computation': 0.02483680399999999, 'Nodes computation': 0.08281742299999983, 'GLR computation': 3.175407977, 'Total': 3.1790749820000004, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=1280, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Multi-threading
+341.39800094899994
+{'Community computation': 0.6311683700000001, 'Nodes computation': 8.193688721000001, 'GLR computation': 341.372951055, 'Total': 341.39800094899994, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
