@@ -30,7 +30,7 @@ class DoubleExperimentExecutor:
             print("read partition mode")
             cmd += ["-p", partition]
         if undirected:
-            print("multithreading mode")
+            print("undirected mode")
             cmd += ["-u"]
 
         return cmd

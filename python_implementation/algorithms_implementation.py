@@ -90,6 +90,7 @@ def compute_GLR_undirected(graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2
     ranking_nodes = []
     sources = LBC_nodes + gateways
     distances_computer = SPSP(graph, sources)
+    distances_computer.run()
     for node in graph.iterNodes():
         summation_LBC_distances = 0
         for u in LBC_nodes:
