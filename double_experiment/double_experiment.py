@@ -46,6 +46,8 @@ class DoubleExperimentExecutor:
             print("undirected mode")
             cmd += ["-u", "true"]
 
+        return cmd
+
     def read_config(self, *keys):
         result = self._configuration
         for key in keys:
