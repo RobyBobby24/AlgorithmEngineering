@@ -98,7 +98,7 @@ def compute_GLR_undirected(graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2
         summation_gateways_distances = 0
         for u in gateways:
             summation_gateways_distances += distances_computer.getDistance(u, node)
-        ranking_nodes.append(1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances))
+        ranking_nodes.append((node, 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)))
     return ranking_nodes
 
 # std implementation
