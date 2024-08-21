@@ -73,3 +73,17 @@ C++;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//
 C++;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnodeundirected(fixpartition);0.006341;0.098386;0.100247;0.100338
 C++;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnodeundirected(fixpartition);0.004076;0.044160;0.045993;0.046037
 C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnodeundirected(fixpartition);0.019770;0.895572;0.904782;0.905582
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition4;2expcommunityundirected;0.04935599899999987;4.522226855;4.636849232000001;4.643128315000001
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition16;2expcommunityundirected;0.054292585000000004;1.945757917;2.077131981;2.080314478
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition8;2expcommunityundirected;0.08332367699999987;2.248044536;2.3908332139999997;2.393792091999999
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition32;2expcommunityundirected;0.06688767000000007;2.6030299959999996;2.8740735760000002;2.8780348969999996
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition128;2expcommunityundirected;0.11831886099999989;6.296494944999999;7.020783395999999;7.027405221999999
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition64;2expcommunityundirected;0.11083927399999993;3.9447880150000003;4.354127891;4.358648437
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition2;2expcommunityundirected;0.027795400000000026;42.838805522;43.287929225999996;43.44367431399999
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition4;2expcommunityundirected;0.018929;2.952264;2.956745;2.957455
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition16;2expcommunityundirected;0.040288;0.489631;0.503688;0.504265
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition8;2expcommunityundirected;0.044102;0.945098;0.956354;0.957249
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition32;2expcommunityundirected;0.071980;0.727634;0.753244;0.753997
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition128;2expcommunityundirected;0.136957;1.486865;1.593572;1.594521
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition64;2expcommunityundirected;0.069686;0.848942;0.900887;0.901580
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/2expnode(n=20480, m=50000)/partition2;2expcommunityundirected;0.013255;4.118374;4.120874;4.121456
