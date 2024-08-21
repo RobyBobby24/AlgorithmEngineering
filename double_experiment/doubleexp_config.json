@@ -24,7 +24,8 @@
       "undirected": true
     },
     "c++" : {
-      "exe_path": "../c++_implementation/main"
+      "exe_path": "../c++_implementation/main",
+      "undirected": true
     }
   }
 }

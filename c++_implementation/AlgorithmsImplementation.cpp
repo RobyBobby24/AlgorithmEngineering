@@ -127,6 +127,30 @@ bool AlgorithmsImplementation::compareCentralityNode(pair<node, double> node1, p
     return node1.second < node2.second ;
 }
 
+//undirected
+vector<pair<node, double>> AlgorithmsImplementation::computeGlrUndirected(Graph* G, list<node> LBC_nodes, list<node> gateways, double alpha1, double alpha2){
+    vector<pair<node, double>> result;
+    list<node> sources = LBC_nodes;
+    sources.insert(sources.end(), gateways.begin(), gateways.end());
+    SPSP* distancesComputer = new SPSP(*G, sources.begin(), sources.end());
+    distancesComputer->run();
+    for( auto nodeI : G->nodeRange() ){
+        double summationLBC_distances = 0.0;
+        for(auto uI = LBC_nodes.begin(); uI != LBC_nodes.end(); uI ++ ){
+            summationLBC_distances += distancesComputer->getDistance(*uI, nodeI);
+        }
+        double summationGatewaysDistances = 0.0;
+        for(auto uI = gateways.begin(); uI != gateways.end(); uI ++ ){
+            summationGatewaysDistances += distancesComputer->getDistance(*uI, nodeI);
+        }
+        double glrI = 1.0/(alpha1*summationLBC_distances + alpha2*summationGatewaysDistances);
+        pair<node, double> nodeAndGLR = make_pair(nodeI, glrI);
+        result.push_back(nodeAndGLR);
+    }
+    return result;
+}
+
+//algorithms
 vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap, string partitionPath){
     pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs;
     if( partitionPath == "" ){
@@ -177,6 +201,75 @@ vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit
         pair<node, double> nodeAndGLR = make_pair(nodeI, glrI);
         rankingNodes.push_back(nodeAndGLR);
     }
+
+    elapsed = t_counter->elapsed();
+    t_counter->pause();
+    cout << "GLR computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"GLR computation", to_string(elapsed)});
+    }
+    t_counter->resume();
+
+    sort(rankingNodes.begin(), rankingNodes.end(), AlgorithmsImplementation::compareCentralityNode);
+    elapsed = t_counter->elapsed();
+    t_counter->pause();
+    cout << "Total "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Total", to_string(elapsed)});
+    }
+    t_counter->resume();
+
+
+    return rankingNodes;
+}
+
+
+
+vector<pair<node, double>> AlgorithmsImplementation::undirectedImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap, string partitionPath){
+    pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs;
+    if( partitionPath == "" ){
+        plmCommunitiesAndGraphs = AlgorithmsImplementation::computeCommunity(G);
+    }
+    else{
+        plmCommunitiesAndGraphs = AlgorithmsImplementation::readCommunity(G, partitionPath);
+    }
+
+    //pair<Partition*,  map<int, Graph*>>
+    Partition* communitySets = plmCommunitiesAndGraphs.first;
+    map<int, Graph*> communityGraphs = plmCommunitiesAndGraphs.second;
+
+    double elapsed = t_counter->elapsed();
+    t_counter->pause();
+    cout << "community computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Community computation", to_string(elapsed)});
+    }
+    t_counter->resume();
+
+    //map<int, pair<node, double>> maxLBC_community;
+    list<node> maxLBC_communityList;
+    //map<int, int> gateways;
+    list<node> gatewaysList;
+
+    for(auto i = communityGraphs.begin(); i != communityGraphs.end(); i ++ ){
+        if( communitySets->getMembers(i->first).size() != 0){
+            pair<node, double> maxLBC_node = AlgorithmsImplementation::btwMax(i->second);
+            //maxLBC_community[i->first] = maxLBC_node;
+            maxLBC_communityList.push_back(maxLBC_node.first);
+            node communityGateway = computeCommunityGateway(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
+            gatewaysList.push_back(communityGateway);
+        }
+    }
+
+    elapsed = t_counter->elapsed();
+    t_counter->pause();
+    cout << "nodes computation "<<"elapsed time: "<< elapsed << "\n";
+    if(elapsedMap != NULL){
+        elapsedMap->insert({"Nodes computation", to_string(elapsed)});
+    }
+    t_counter->resume();
+
+    vector<pair<node, double>> rankingNodes = computeGlrUndirected(G, maxLBC_communityList, gatewaysList);
 
     elapsed = t_counter->elapsed();
     t_counter->pause();

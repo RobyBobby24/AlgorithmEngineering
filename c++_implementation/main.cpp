@@ -51,7 +51,8 @@ int main(int argc, char** argv) {
 	desc.add_options()
 	("graph_location,g", po::value<std::string>(), "Input Graph File Location")
 	("flag,f", po::value<std::string>(), "Input Flag String")
-	("partitionPath,p", po::value<std::string>(), "Input Partition File Location");
+	("partitionPath,p", po::value<std::string>(), "Input Partition File Location")
+	("undirected,u", po::value<std::string>(), "Enable undirect graph optimization");
 
 
 	po::variables_map vm;
@@ -62,6 +63,7 @@ int main(int argc, char** argv) {
 	string graph_location;
 	string flag;
 	string partitionPath = "";
+	bool undirected = false;
 
 	if (vm.empty()){
 			cout << desc << "\n";
@@ -76,6 +78,9 @@ int main(int argc, char** argv) {
     }
     if (vm.count("partitionPath")) {
             partitionPath = vm["partitionPath"].as<std::string>();
+    }
+    if (vm.count("undirected")) {
+            undirected = true;
     }
 
 	if(graph_location == ""){
@@ -107,7 +112,14 @@ int main(int argc, char** argv) {
         elapsedMap->insert({"Partition", partitionPath});
     }
     // algorithm execution
-    vector<pair<node, double>> rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap, partitionPath);
+     vector<pair<node, double>> rankingNodes;
+     if(undirected){
+        rankingNodes = AlgorithmsImplementation::undirectedImplementation(graph, t_counter, elapsedMap, partitionPath);
+     }
+     else{
+        rankingNodes = AlgorithmsImplementation::stdImplementation(graph, t_counter, elapsedMap, partitionPath);
+     }
+
 
     // save results
     string labels[2] = {"Node", "Centrality Degree"};

@@ -31,17 +31,20 @@ class DoubleExperimentExecutor:
             cmd += ["-p", partition]
         if undirected:
             print("undirected mode")
-            cmd += ["-u"]
+            cmd += ["-u", "true"]
 
         return cmd
 
     def _compiled_cmd(self, graph, partition, code_language):
         exe_file = self._configuration['languages_codes'][code_language]["exe_path"]
+        undirected = self._configuration['languages_codes'][code_language]['undirected']
+        cmd = [exe_file, "-g", graph, "-f", self._configuration["result_flag"]]
         if partition is not None:
             print("read partition mode")
-            return [exe_file, "-g", graph, "-f", self._configuration["result_flag"], "-p", partition]
-        else:
-            return [exe_file, "-g", graph, "-f", self._configuration["result_flag"]]
+            cmd += ["-p", partition]
+        if undirected:
+            print("undirected mode")
+            cmd += ["-u", "true"]
 
     def read_config(self, *keys):
         result = self._configuration
