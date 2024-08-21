@@ -31,7 +31,7 @@ class DoubleExperimentExecutor:
             cmd += ["-p", partition]
         if undirected:
             print("undirected mode")
-            cmd += ["-u", "true"]
+            cmd += ["-u"]
 
         return cmd
 
