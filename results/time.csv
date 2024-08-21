@@ -66,3 +66,10 @@ python;2expnode(n=40960, m=50000).graph;None;2expnodemultithreading;0.696551167;
 python;2expnode(n=2560, m=50000).graph;None;2expnodemultithreading;0.03731307400000006;0.209779728;16.044993741000003;16.047833083
 python;2expnode(n=1280, m=50000).graph;None;2expnodemultithreading;0.02483680399999999;0.08281742299999983;3.175407977;3.1790749820000004
 python;2expnode(n=20480, m=50000).graph;None;2expnodemultithreading;0.6311683700000001;8.193688721000001;341.372951055;341.39800094899994
+python;2expnode(n=5120, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=5120, m=50000);2expnodeundirected(fixpartition);0.10160568800000003;2.2015504540000004;2.3001872820000004;2.337224977
+python;2expnode(n=10240, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=10240, m=50000);2expnodeundirected(fixpartition);0.14871813699999992;1.9327966570000001;2.1616915199999998;2.1676486720000003
+python;2expnode(n=640, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=640, m=50000);2expnodeundirected(fixpartition);0.006920007000000172;0.1454384820000001;0.14980522200000013;0.15007743500000026
+python;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=40960, m=50000);2expnodeundirected(fixpartition);0.20460095199999984;18.896737515;19.313171475;19.325620578000002
+python;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnodeundirected(fixpartition);0.03423033799999997;0.8825029590000002;0.9223693880000001;0.9232914620000006
+python;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnodeundirected(fixpartition);0.34938294299999995;0.7388462189999998;0.7651550379999998;0.7656494419999997
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnodeundirected(fixpartition);0.30293529100000005;6.173254089;6.392177482;6.398385266

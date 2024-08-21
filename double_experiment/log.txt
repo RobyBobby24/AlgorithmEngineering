@@ -764,3 +764,38 @@ Multi-threading
 341.39800094899994
 {'Community computation': 0.6311683700000001, 'Nodes computation': 8.193688721000001, 'GLR computation': 341.372951055, 'Total': 341.39800094899994, 'Code': 'python', 'Flag': '2expnodemultithreading', 'Partition': 'None', 'Graph': '2expnode(n=20480, m=50000).graph'}
 ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=5120, m=50000).graph):
+turn on undirected optimization
+2.337224977
+{'Community computation': 0.10160568800000003, 'Nodes computation': 2.2015504540000004, 'GLR computation': 2.3001872820000004, 'Total': 2.337224977, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=5120, m=50000)', 'Graph': '2expnode(n=5120, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=5120, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+turn on undirected optimization
+2.1676486720000003
+{'Community computation': 0.14871813699999992, 'Nodes computation': 1.9327966570000001, 'GLR computation': 2.1616915199999998, 'Total': 2.1676486720000003, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=10240, m=50000)', 'Graph': '2expnode(n=10240, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=10240, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=640, m=50000).graph):
+turn on undirected optimization
+0.15007743500000026
+{'Community computation': 0.006920007000000172, 'Nodes computation': 0.1454384820000001, 'GLR computation': 0.14980522200000013, 'Total': 0.15007743500000026, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=640, m=50000)', 'Graph': '2expnode(n=640, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=640, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=40960, m=50000).graph):
+turn on undirected optimization
+19.325620578000002
+{'Community computation': 0.20460095199999984, 'Nodes computation': 18.896737515, 'GLR computation': 19.313171475, 'Total': 19.325620578000002, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=40960, m=50000)', 'Graph': '2expnode(n=40960, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=40960, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=2560, m=50000).graph):
+turn on undirected optimization
+0.9232914620000006
+{'Community computation': 0.03423033799999997, 'Nodes computation': 0.8825029590000002, 'GLR computation': 0.9223693880000001, 'Total': 0.9232914620000006, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=2560, m=50000)', 'Graph': '2expnode(n=2560, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=2560, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+turn on undirected optimization
+0.7656494419999997
+{'Community computation': 0.34938294299999995, 'Nodes computation': 0.7388462189999998, 'GLR computation': 0.7651550379999998, 'Total': 0.7656494419999997, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=1280, m=50000)', 'Graph': '2expnode(n=1280, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=1280, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+turn on undirected optimization
+6.398385266
+{'Community computation': 0.30293529100000005, 'Nodes computation': 6.173254089, 'GLR computation': 6.392177482, 'Total': 6.398385266, 'Code': 'python', 'Flag': '2expnodeundirected(fixpartition)', 'Partition': '../partial_results/partitions/partition10//2expnode(n=20480, m=50000)', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
