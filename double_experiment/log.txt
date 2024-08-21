@@ -1016,3 +1016,167 @@ ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
 [INFO ]: 
 [DONE]
 
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+turn on undirected optimization
+0.09016567100000006
+{'Community computation': 0.039945752999999806, 'Nodes computation': 0.08674221299999996, 'GLR computation': 0.09000479500000003, 'Total': 0.09016567100000006, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=163584).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=5112).graph):
+turn on undirected optimization
+0.06417439699999994
+{'Community computation': 0.008246951000000058, 'Nodes computation': 0.03492386400000003, 'GLR computation': 0.06395104200000001, 'Total': 0.06417439699999994, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=5112).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=5112).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=20448).graph):
+turn on undirected optimization
+0.04737835499999998
+{'Community computation': 0.01102002599999996, 'Nodes computation': 0.044789994000000055, 'GLR computation': 0.04716967400000005, 'Total': 0.04737835499999998, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=20448).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=20448).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+turn on undirected optimization
+0.02387347899999992
+{'Community computation': 0.014039859000000154, 'Nodes computation': 0.02117972300000015, 'GLR computation': 0.02372270300000001, 'Total': 0.02387347899999992, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=1278).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=2556).graph):
+turn on undirected optimization
+0.03664065499999958
+{'Community computation': 0.008267774999999977, 'Nodes computation': 0.03495493999999977, 'GLR computation': 0.0364957969999995, 'Total': 0.03664065499999958, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=2556).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=639).graph):
+turn on undirected optimization
+0.022279611000000532
+{'Community computation': 0.0070585690000000145, 'Nodes computation': 0.018752895000000214, 'GLR computation': 0.022081887000000355, 'Total': 0.022279611000000532, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=639).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=639).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=40896).graph):
+turn on undirected optimization
+0.051020343999999884
+{'Community computation': 0.034437644000000045, 'Nodes computation': 0.049148897000000025, 'GLR computation': 0.05082011399999997, 'Total': 0.051020343999999884, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=40896).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=40896).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=81792).graph):
+turn on undirected optimization
+0.039680200000000276
+{'Community computation': 0.02632782899999997, 'Nodes computation': 0.037434518000000194, 'GLR computation': 0.039557439000000194, 'Total': 0.039680200000000276, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=81792).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=81792).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+turn on undirected optimization
+0.033956955999999705
+{'Community computation': 0.007782924999999885, 'Nodes computation': 0.031534249999999764, 'GLR computation': 0.03376388399999963, 'Total': 0.033956955999999705, 'Code': 'python', 'Flag': '2expedgeundirected', 'Partition': 'None', 'Graph': '2expedge(n=640, m=10224).graph'}
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=163584).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.0184046
+nodes computation elapsed time: 0.0381848
+GLR computation elapsed time: 0.0398956
+Total elapsed time: 0.0399121
+ERROR(../graphs/2expedge/2expedge(n=640, m=163584).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=163584) from METIS file: 2expedge(n=640, m=163584)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=5112).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.0450443
+nodes computation elapsed time: 0.0486529
+GLR computation elapsed time: 0.0489247
+Total elapsed time: 0.0489451
+ERROR(../graphs/2expedge/2expedge(n=640, m=5112).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=5112) from METIS file: 2expedge(n=640, m=5112)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=20448).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.00503015
+nodes computation elapsed time: 0.0104243
+GLR computation elapsed time: 0.0107666
+Total elapsed time: 0.0107813
+ERROR(../graphs/2expedge/2expedge(n=640, m=20448).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=20448) from METIS file: 2expedge(n=640, m=20448)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=1278).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.0200981
+nodes computation elapsed time: 0.0472151
+GLR computation elapsed time: 0.047501
+Total elapsed time: 0.0475273
+ERROR(../graphs/2expedge/2expedge(n=640, m=1278).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=1278) from METIS file: 2expedge(n=640, m=1278)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=2556).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.00503968
+nodes computation elapsed time: 0.00736633
+GLR computation elapsed time: 0.00761972
+Total elapsed time: 0.0076424
+ERROR(../graphs/2expedge/2expedge(n=640, m=2556).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=2556) from METIS file: 2expedge(n=640, m=2556)
+[INFO ]: 
+[DONE]
+
+[33m[WARN ][0m: [33mmove phase aborted after 32 iterations[0m
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=639).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.028634
+nodes computation elapsed time: 0.0620751
+GLR computation elapsed time: 0.0624603
+Total elapsed time: 0.0624908
+ERROR(../graphs/2expedge/2expedge(n=640, m=639).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=639) from METIS file: 2expedge(n=640, m=639)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=40896).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.0213414
+nodes computation elapsed time: 0.0299919
+GLR computation elapsed time: 0.0305224
+Total elapsed time: 0.0305348
+ERROR(../graphs/2expedge/2expedge(n=640, m=40896).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=40896) from METIS file: 2expedge(n=640, m=40896)
+[INFO ]: 
+[DONE]
+
+[33m[WARN ][0m: [33mmove phase aborted after 32 iterations[0m
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=81792).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.012559
+nodes computation elapsed time: 0.0492434
+GLR computation elapsed time: 0.0513924
+Total elapsed time: 0.0514124
+ERROR(../graphs/2expedge/2expedge(n=640, m=81792).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=81792) from METIS file: 2expedge(n=640, m=81792)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expedge/2expedge(n=640, m=10224).graph):
+Start Algorithm
+number of nodes: 640
+community computation elapsed time: 0.00563104
+nodes computation elapsed time: 0.0540318
+GLR computation elapsed time: 0.0546867
+Total elapsed time: 0.0547071
+ERROR(../graphs/2expedge/2expedge(n=640, m=10224).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=640, m=10224) from METIS file: 2expedge(n=640, m=10224)
+[INFO ]: 
+[DONE]
+
