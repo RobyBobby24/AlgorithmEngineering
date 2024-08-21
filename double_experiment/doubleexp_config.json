@@ -2,9 +2,9 @@
   "graphs_dir": "../graphs/2expnode/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expnodemultithreading",
+  "result_flag": "2expnodeundirected(fixpartition)",
   "load_partition": true,
-  "strategy_name": "graph",
+  "strategy_name": "partition_graph",
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
@@ -21,7 +21,7 @@
   "languages_codes": {
     "python" : {
       "exe_path": "../python_implementation/algorithms_implementation.py",
-      "multithreading": true
+      "undirected": true
     },
     "c++" : {
       "exe_path": "../c++_implementation/main"

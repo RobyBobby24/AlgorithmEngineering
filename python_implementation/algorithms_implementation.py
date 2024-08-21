@@ -7,6 +7,7 @@ from networkit import graphtools
 from networkit import centrality
 from networkit.graph import Graph
 from networkit.distance import BFS
+from networkit.distance import SPSP
 from networkit.distance import MultiTargetBFS
 from time import process_time, time
 import os
@@ -85,15 +86,19 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
 
 # parallel version
 
-def compute_GLR_parallel(node, graph: Graph, LBC_nodes, gateways, result_list: list, alpha1=0.5, alpha2=0.5):
-    bfs = MultiTargetBFS(graph, node, LBC_nodes.values())
-    bfs.run()
-    summation_LBC_distances = sum(bfs.getDistances())
-    bfs = MultiTargetBFS(graph, node, gateways.values())
-    bfs.run()
-    summation_gateways_distances = sum(bfs.getDistances())
-    glr_value = 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
-    result_list.append((node, glr_value))
+def compute_GLR_undirected(graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
+    ranking_nodes = []
+    sources = LBC_nodes + gateways
+    distances_computer = SPSP(graph, sources)
+    for node in graph.iterNodes():
+        summation_LBC_distances = 0
+        for u in LBC_nodes:
+            summation_LBC_distances += distances_computer.getDistance(u, node)
+        summation_gateways_distances = 0
+        for u in gateways:
+            summation_gateways_distances += distances_computer.getDistance(u, node)
+        ranking_nodes.append(1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances))
+    return ranking_nodes
 
 # std implementation
 
@@ -138,7 +143,7 @@ def community_centrality_std(G: Graph, measure_time: bool = True, check_correctn
 
 # multi threading implementation
 
-def community_centrality_parallel(G: Graph, measure_time: bool = True, check_correctness: bool = False, partition_path: str = None):
+def community_centrality_undirected(G: Graph, measure_time: bool = True, check_correctness: bool = False, partition_path: str = None):
     times = {}
     # Community Computation
     if partition_path is None:
@@ -149,27 +154,19 @@ def community_centrality_parallel(G: Graph, measure_time: bool = True, check_cor
     _COMMUNITY_COMPUTATION_PAUSE(times, community_sets, measure_time, check_correctness)
 
     # Nodes Computation
-    max_LBC_community = {}
-    gateways = {}
+    max_LBC_community = []
+    gateways = []
     for i in community_graphs.keys():
         if len(community_sets.getMembers(i)) != 0:
             max_LBC_node = btw_max(community_graphs[i])[0]
-            max_LBC_community[i] = max_LBC_node
-            gateways[i] = compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node)
+            max_LBC_community.append(max_LBC_node)
+            gateways.append(compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node))
             _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness)
 
     _NODES_COMPUTATION_PAUSE(times, measure_time)
 
     # GLR Computation
-    ranking_nodes = []
-    threads = []
-    for node in G.iterNodes():
-        thread = threading.Thread(target=compute_GLR_parallel, args=(node, G, max_LBC_community, gateways, ranking_nodes))
-        threads.append(thread)
-        thread.start()
-
-    for thread in threads:
-        thread.join()
+    ranking_nodes = compute_GLR_undirected(G, max_LBC_community, gateways)
 
     _GLR_COMPUTATION_PAUSE(times, measure_time)
 
@@ -250,14 +247,14 @@ def get_IO_paths():
     parser.add_argument('-r', '--result-folder', type=str, help='Path of result folder', required=False)
     parser.add_argument('-f', '--flag', type=str, help='A flag to mark the result', required=False)
     parser.add_argument('-p', '--partition', type=str, help='Path to the partition file', required=False)
-    parser.add_argument('-t', '--threads', action='store_true', help='Enable multi-threading mode', required=False)
+    parser.add_argument('-u', '--undirected', action='store_true', help='Enable undirected optimization', required=False)
     args = parser.parse_args()
 
     graph_path = args.graph
     result_folder = args.result_folder
     flag = args.flag
     partition_path = args.partition
-    multi_threading = args.threads
+    undirected = args.undirected
     # If graph is not passed as args require it as standard input
     if graph_path is None:
         show_file("../graphs")
@@ -269,10 +266,7 @@ def get_IO_paths():
     if flag is None:
         flag = "prova"
 
-    if multi_threading is None:
-        multi_threading = False
-
-    return graph_path, result_folder, flag, partition_path, multi_threading
+    return graph_path, result_folder, flag, partition_path, undirected
 
 
 def save_results(file_name, centrality_rank, times=None):
@@ -297,7 +291,7 @@ def save_results(file_name, centrality_rank, times=None):
 
 if __name__ == "__main__":
 
-    graph_path, result_folder, flag, partition_path, multi_threading = get_IO_paths()
+    graph_path, result_folder, flag, partition_path, undirected = get_IO_paths()
 
     # load graph from path
     G = readGraph(graph_path, Format.METIS)
@@ -305,9 +299,9 @@ if __name__ == "__main__":
     measure_time = True
 
     # choose if exec the algorithm in multi-threading or no
-    if multi_threading:
-        print("Multi-threading")
-        community_centrality = community_centrality_parallel
+    if undirected:
+        print("turn on undirected optimization")
+        community_centrality = community_centrality_undirected
     else:
         community_centrality = community_centrality_std
 
