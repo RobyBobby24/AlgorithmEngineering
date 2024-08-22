@@ -2,9 +2,9 @@
   "graphs_dir": "../graphs/2expedge/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expedgeundirected",
+  "result_flag": "2expcommunityundirected",
   "load_partition": true,
-  "strategy_name": "graph",
+  "strategy_name": "partition",
   "repetition": 9,
   "strategies": {
     "partition_graph": {
