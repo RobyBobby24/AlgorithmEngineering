@@ -63,12 +63,15 @@ class DoubleExperimentExecutor:
             else:
                 cmd = self._compiled_cmd(graph, partition, code_language)
 
-            result = subprocess.run(cmd, capture_output=True, text=True)
-            with open(self._configuration["log_file"], "a") as file:
-                file.write(f"STANDARD OUTPUT ({graph}):\n")
-                file.write(result.stdout)
-                file.write(f"ERROR({graph}):\n")
-                file.write(result.stderr)
+            repetition = self._configuration["repetition"]
+            for i in range(repetition):
+                result = subprocess.run(cmd, capture_output=True, text=True)
+                with open(self._configuration["log_file"], "a") as file:
+                    file.write(f"STANDARD OUTPUT ({graph}):\n")
+                    file.write(result.stdout)
+                    file.write(f"ERROR({graph}):\n")
+                    file.write(result.stderr)
+                print(f"{i+1}/{repetition} done")
             print("End execution of algorithms applied for graph", graph)
         print("End Double Experiment!!")
 

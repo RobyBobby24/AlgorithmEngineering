@@ -5,6 +5,7 @@
   "result_flag": "2expedgeundirected",
   "load_partition": true,
   "strategy_name": "graph",
+  "repetition": 9,
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
