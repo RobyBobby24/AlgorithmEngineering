@@ -34,6 +34,7 @@ class AlgorithmsImplementation {
         static double computeGLR(NetworKit::node nodeI, NetworKit::Graph* graph,std::list<NetworKit::node> LBC_nodes, std::list<NetworKit::node> gateways, double alpha1=0.5, double alpha2=0.5);
         static bool compareCentralityNode(std::pair<NetworKit::node, double> node1, std::pair<NetworKit::node, double> node2);
         static std::vector<std::pair<NetworKit::node, double>> computeGlrUndirected(NetworKit::Graph* G, std::list<NetworKit::node> LBC_nodes, std::list<NetworKit::node> gateways, double alpha1=0.5, double alpha2=0.5);
+        static NetworKit::node computeCommunityGatewayUndirected(NetworKit::Graph* graph,  NetworKit::Graph* communityGraph, std::set<NetworKit::index> communityNodes, std::pair<NetworKit::node, double> maxLBC_node );
 
 
 };

@@ -2,7 +2,7 @@
   "graphs_dir": "../graphs/2expnode/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expnodeundirected(fixpartition)",
+  "result_flag": "myundirected",
   "load_partition": true,
   "strategy_name": "partition_graph",
   "repetition": 9,

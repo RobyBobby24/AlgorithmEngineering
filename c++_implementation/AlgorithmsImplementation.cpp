@@ -150,6 +150,46 @@ vector<pair<node, double>> AlgorithmsImplementation::computeGlrUndirected(Graph*
     return result;
 }
 
+
+node AlgorithmsImplementation::computeCommunityGatewayUndirected(Graph* graph,  Graph* communityGraph, set<node> communityNodes, pair<node, double> maxLBC_node ){
+    int maxICL = 0;
+    list<node> maxICL_nodes;
+    node result;
+    for(auto nodeFrom = communityNodes.begin(); nodeFrom != communityNodes.end(); nodeFrom ++ ) {
+        int totalDegree = graph->degree(*nodeFrom);
+        int innerDegree = communityGraph->degree(*nodeFrom);
+        int outDegree = totalDegree - innerDegree;
+        if (outDegree > maxICL) {
+            maxICL = outDegree;
+            maxICL_nodes.clear();
+            maxICL_nodes.push_back(*nodeFrom);
+        }
+        else if (outDegree == maxICL) {
+            maxICL_nodes.push_back(*nodeFrom);
+        }
+    }
+    if (maxICL_nodes.size() == 1){
+        result = *maxICL_nodes.begin();
+    }
+    else {
+        MultiTargetBFS* bfs = new MultiTargetBFS(*graph, maxLBC_node.first, maxICL_nodes.begin(), maxICL_nodes.end());
+        bfs->run();
+        vector<double> distances = bfs->getDistances();
+        int minDistance = 0;
+        node maxICL_node;
+        int i = 0;
+        for(auto nodeI = maxICL_nodes.begin(); nodeI != maxICL_nodes.end(); nodeI ++ ){
+            if (minDistance == 0 || distances[i] < minDistance){
+                minDistance = distances[i];
+                maxICL_node = *nodeI;
+            }
+            i += 1;
+        }
+        result = maxICL_node;
+    }
+    return result;
+}
+
 //algorithms
 vector<pair<node, double>> AlgorithmsImplementation::stdImplementation(NetworKit::Graph* G, mytimer* t_counter, map<string, string>* elapsedMap, string partitionPath){
     pair<Partition*,  map<int, Graph*>> plmCommunitiesAndGraphs;
@@ -256,7 +296,7 @@ vector<pair<node, double>> AlgorithmsImplementation::undirectedImplementation(Ne
             pair<node, double> maxLBC_node = AlgorithmsImplementation::btwMax(i->second);
             //maxLBC_community[i->first] = maxLBC_node;
             maxLBC_communityList.push_back(maxLBC_node.first);
-            node communityGateway = computeCommunityGateway(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
+            node communityGateway = computeCommunityGatewayUndirected(G, communityGraphs[i->first], communitySets->getMembers(i->first), maxLBC_node);
             gatewaysList.push_back(communityGateway);
         }
     }

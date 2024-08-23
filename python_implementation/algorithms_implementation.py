@@ -84,7 +84,7 @@ def compute_GLR(node, graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5)
     summation_gateways_distances = sum(bfs.getDistances())
     return 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)
 
-# parallel version
+# undirected version
 
 def compute_GLR_undirected(graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2=0.5):
     ranking_nodes = []
@@ -100,6 +100,34 @@ def compute_GLR_undirected(graph: Graph, LBC_nodes, gateways, alpha1=0.5, alpha2
             summation_gateways_distances += distances_computer.getDistance(u, node)
         ranking_nodes.append((node, 1 / (alpha1 * summation_LBC_distances + alpha2 * summation_gateways_distances)))
     return ranking_nodes
+
+
+def compute_community_gateway_undirected(graph: Graph, community_graph: Graph, community_nodes, max_LBC_node):
+    max_ICL = 0
+    max_ICL_nodes = []
+    for node_from in community_nodes:
+        total_degree = graph.degree(node_from)
+        inner_degree = community_graph.degree(node_from)
+        out_degree = total_degree - inner_degree
+        if out_degree > max_ICL:
+            max_ICL_nodes = [node_from]
+            max_ICL = out_degree
+        elif out_degree == max_ICL:
+            max_ICL_nodes.append(node_from)
+
+    if len(max_ICL_nodes) == 1:
+        return max_ICL_nodes[0]
+    else:
+        bfs = MultiTargetBFS(community_graph, max_LBC_node, max_ICL_nodes)
+        bfs.run()
+        distances = bfs.getDistances()
+        min_distance = 0
+        max_ICL_node = -1
+        for node, distance in zip(max_ICL_nodes, distances):
+            if max_ICL_node == -1 or distance < min_distance:
+                min_distance = distance
+                max_ICL_node = node
+        return max_ICL_node
 
 # std implementation
 
@@ -142,7 +170,7 @@ def community_centrality_std(G: Graph, measure_time: bool = True, check_correctn
     else:
         return ranking_nodes
 
-# multi threading implementation
+# undirected implementation
 
 def community_centrality_undirected(G: Graph, measure_time: bool = True, check_correctness: bool = False, partition_path: str = None):
     times = {}
@@ -161,7 +189,7 @@ def community_centrality_undirected(G: Graph, measure_time: bool = True, check_c
         if len(community_sets.getMembers(i)) != 0:
             max_LBC_node = btw_max(community_graphs[i])[0]
             max_LBC_community.append(max_LBC_node)
-            gateways.append(compute_community_gateway(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node))
+            gateways.append(compute_community_gateway_undirected(G, community_graphs[i], community_sets.getMembers(i), max_LBC_node))
             _CHECK_NODES_COMPUTATION(max_LBC_node, community_sets, gateways, i, check_correctness)
 
     _NODES_COMPUTATION_PAUSE(times, measure_time)
