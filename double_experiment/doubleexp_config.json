@@ -1,10 +1,8 @@
 {
-  "graphs_dir": "../graphs/2expnode/",
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expcommunityundirected",
-  "load_partition": true,
-  "strategy_name": "partition",
+  "result_flag": "2expedgeundirected",
+  "strategy_name": "graph",
   "repetition": 10,
   "strategies": {
     "partition_graph": {
