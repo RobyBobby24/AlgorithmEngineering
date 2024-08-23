@@ -172,7 +172,7 @@ node AlgorithmsImplementation::computeCommunityGatewayUndirected(Graph* graph,  
         result = *maxICL_nodes.begin();
     }
     else {
-        MultiTargetBFS* bfs = new MultiTargetBFS(*graph, maxLBC_node.first, maxICL_nodes.begin(), maxICL_nodes.end());
+        MultiTargetBFS* bfs = new MultiTargetBFS(*communityGraph, maxLBC_node.first, maxICL_nodes.begin(), maxICL_nodes.end());
         bfs->run();
         vector<double> distances = bfs->getDistances();
         int minDistance = 0;
