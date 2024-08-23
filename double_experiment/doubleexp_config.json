@@ -1,8 +1,8 @@
 {
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expnode",
-  "strategy_name": "graph",
+  "result_flag": "2expnode(fixnumbercommunity)",
+  "strategy_name": "partition_graph",
   "repetition": 2,
   "strategies": {
     "partition_graph": {
