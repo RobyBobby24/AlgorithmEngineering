@@ -1,16 +1,16 @@
 {
   "log_file": "./log.txt",
   "filter_world": "",
-  "result_flag": "2expedgeundirected",
+  "result_flag": "2expnode",
   "strategy_name": "graph",
-  "repetition": 10,
+  "repetition": 2,
   "strategies": {
     "partition_graph": {
       "graphs_dir": "../graphs/2expnode/",
       "partition_dir": "../partial_results/partitions/partition10/"
     },
     "graph": {
-      "graphs_dir": "../graphs/2expedge/"
+      "graphs_dir": "../graphs/2expnode/"
     },
     "partition": {
       "graph_path": "../graphs/2expnode/2expnode(n=20480, m=50000).graph",
@@ -20,11 +20,11 @@
   "languages_codes": {
     "python" : {
       "exe_path": "../python_implementation/algorithms_implementation.py",
-      "undirected": true
+      "undirected": false
     },
     "c++" : {
       "exe_path": "../c++_implementation/main",
-      "undirected": true
+      "undirected": false
     }
   }
 }
