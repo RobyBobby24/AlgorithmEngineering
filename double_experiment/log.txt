@@ -10843,3 +10843,241 @@ ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
 [INFO ]: 
 [DONE]
 
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+455.469924986
+{'Community computation': 0.10434671400000006, 'Nodes computation': 12.381118009, 'GLR computation': 455.46170634, 'Total': 455.469924986, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition4', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+653.732344422
+{'Community computation': 0.19270266100000022, 'Nodes computation': 21.109090015, 'GLR computation': 653.724952757, 'Total': 653.732344422, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition4', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+366.900018117
+{'Community computation': 0.2033927059999998, 'Nodes computation': 5.238640021, 'GLR computation': 366.890309364, 'Total': 366.900018117, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition16', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+367.67003361700006
+{'Community computation': 0.135037332, 'Nodes computation': 4.78144919, 'GLR computation': 367.661121923, 'Total': 367.67003361700006, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition16', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+258.998956766
+{'Community computation': 0.13417605300000002, 'Nodes computation': 6.2615145530000005, 'GLR computation': 258.993067262, 'Total': 258.998956766, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition8', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+268.38265873999995
+{'Community computation': 0.06481819900000008, 'Nodes computation': 3.804675729, 'GLR computation': 268.37774856399994, 'Total': 268.38265873999995, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition8', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+286.344449273
+{'Community computation': 0.11059785100000008, 'Nodes computation': 4.023571046999999, 'GLR computation': 286.33609608499995, 'Total': 286.344449273, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition32', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+282.04742698900003
+{'Community computation': 0.16667155100000008, 'Nodes computation': 4.006402651, 'GLR computation': 282.03941872400003, 'Total': 282.04742698900003, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition32', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+408.442614879
+{'Community computation': 0.233643233, 'Nodes computation': 11.763455774999999, 'GLR computation': 408.429980242, 'Total': 408.442614879, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition128', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+264.661622089
+{'Community computation': 0.1257834320000002, 'Nodes computation': 7.624660176000001, 'GLR computation': 264.641296785, 'Total': 264.661622089, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition128', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+290.465440153
+{'Community computation': 0.12928657899999996, 'Nodes computation': 6.745550544000001, 'GLR computation': 290.45399611, 'Total': 290.465440153, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition64', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+286.835840353
+{'Community computation': 0.15507447100000005, 'Nodes computation': 6.496075070000001, 'GLR computation': 286.81670240799997, 'Total': 286.835840353, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition64', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+325.81866451499997
+{'Community computation': 0.06657514099999995, 'Nodes computation': 79.82322947200001, 'GLR computation': 325.81294696699996, 'Total': 325.81866451499997, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition2', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+316.043810643
+{'Community computation': 0.08540715999999993, 'Nodes computation': 77.502957791, 'GLR computation': 316.03746216800005, 'Total': 316.043810643, 'Code': 'python', 'Flag': '2expcommunity', 'Partition': '../partial_results/partitions/2expnode(n=20480, m=50000)/partition2', 'Graph': '2expnode(n=20480, m=50000).graph'}
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0152107
+nodes computation elapsed time: 1.10502
+GLR computation elapsed time: 328.848
+Total elapsed time: 328.849
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0305195
+nodes computation elapsed time: 1.60529
+GLR computation elapsed time: 405.279
+Total elapsed time: 405.28
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.133602
+nodes computation elapsed time: 0.971079
+GLR computation elapsed time: 444.637
+Total elapsed time: 444.638
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.134268
+nodes computation elapsed time: 0.745483
+GLR computation elapsed time: 386.253
+Total elapsed time: 386.254
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0546211
+nodes computation elapsed time: 1.79626
+GLR computation elapsed time: 390.493
+Total elapsed time: 390.494
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0249949
+nodes computation elapsed time: 1.70108
+GLR computation elapsed time: 335.741
+Total elapsed time: 335.743
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.127073
+nodes computation elapsed time: 0.832175
+GLR computation elapsed time: 406.509
+Total elapsed time: 406.51
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.087949
+nodes computation elapsed time: 0.838389
+GLR computation elapsed time: 403.903
+Total elapsed time: 403.904
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.221945
+nodes computation elapsed time: 2.11399
+GLR computation elapsed time: 393.279
+Total elapsed time: 393.28
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.172505
+nodes computation elapsed time: 2.08487
+GLR computation elapsed time: 406.423
+Total elapsed time: 406.424
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.215098
+nodes computation elapsed time: 1.37009
+GLR computation elapsed time: 321.272
+Total elapsed time: 321.273
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0937587
+nodes computation elapsed time: 1.27197
+GLR computation elapsed time: 415.473
+Total elapsed time: 415.474
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.093996
+nodes computation elapsed time: 18.2797
+GLR computation elapsed time: 308.093
+Total elapsed time: 308.093
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
+STANDARD OUTPUT (../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+Start Algorithm
+number of nodes: 20480
+community computation elapsed time: 0.0667848
+nodes computation elapsed time: 23.5433
+GLR computation elapsed time: 315.935
+Total elapsed time: 315.936
+ERROR(../graphs/2expnode/2expnode(n=20480, m=50000).graph):
+[INFO ]: 
+[BEGIN] reading graph G(n=20480, m=50000) from METIS file: 2expnode(n=20480, m=50000)
+[INFO ]: 
+[DONE]
+
