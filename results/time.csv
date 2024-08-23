@@ -547,3 +547,31 @@ C++;2expnode(n=1280, m=50000).graph;None;2expnode;0.012859;0.030047;1.219402;1.2
 C++;2expnode(n=1280, m=50000).graph;None;2expnode;0.014394;0.064155;1.355317;1.355333
 C++;2expnode(n=20480, m=50000).graph;None;2expnode;0.161652;1.321998;213.820246;213.820770
 C++;2expnode(n=20480, m=50000).graph;None;2expnode;0.174468;1.237942;281.101584;281.102456
+python;2expnode(n=5120, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=5120, m=50000);2expnode(fixnumbercommunity);0.041943395999999966;0.6065140199999999;42.902527114;42.908114387
+python;2expnode(n=5120, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=5120, m=50000);2expnode(fixnumbercommunity);0.08836503600000012;2.1324946800000006;53.773261096;53.774156332
+python;2expnode(n=10240, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=10240, m=50000);2expnode(fixnumbercommunity);0.05292981600000002;0.8637869570000001;51.957691204999996;51.960000058
+python;2expnode(n=10240, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=10240, m=50000);2expnode(fixnumbercommunity);0.012857756000000053;0.9301796259999999;58.560142579;58.561987297
+python;2expnode(n=640, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=640, m=50000);2expnode(fixnumbercommunity);0.01294928900000003;0.03648614799999983;0.975449435;0.9755967680000002
+python;2expnode(n=640, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=640, m=50000);2expnode(fixnumbercommunity);0.010816750999999902;0.09983050699999985;1.079247286;1.0794019099999999
+python;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=40960, m=50000);2expnode(fixnumbercommunity);0.06344382600000009;7.523049369000001;542.3274314490001;542.336080482
+python;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=40960, m=50000);2expnode(fixnumbercommunity);0.07599713099999983;8.553071046;517.291754711;517.318564823
+python;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnode(fixnumbercommunity);0.013551866000000024;0.4544167210000001;8.483242923;8.483783468
+python;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnode(fixnumbercommunity);0.0069774179999999575;0.4491583939999999;8.417951432;8.418405135
+python;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnode(fixnumbercommunity);0.017123801000000105;0.17514437999999988;1.655312205;1.6555689419999995
+python;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnode(fixnumbercommunity);0.022552758000000006;0.1929268329999998;1.647828999;1.6480759349999998
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnode(fixnumbercommunity);0.06451243100000004;2.1855036340000003;172.595485781;172.59903899499997
+python;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnode(fixnumbercommunity);0.07706746099999995;2.305879374;168.07465639600002;168.078216084
+C++;2expnode(n=5120, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=5120, m=50000);2expnode(fixnumbercommunity);0.008079;0.157836;21.523280;21.523453
+C++;2expnode(n=5120, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=5120, m=50000);2expnode(fixnumbercommunity);0.008851;0.189757;22.493265;22.493682
+C++;2expnode(n=10240, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=10240, m=50000);2expnode(fixnumbercommunity);0.014981;0.358476;76.213981;76.214239
+C++;2expnode(n=10240, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=10240, m=50000);2expnode(fixnumbercommunity);0.022686;0.217870;63.724063;63.724284
+C++;2expnode(n=640, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=640, m=50000);2expnode(fixnumbercommunity);0.006646;0.015656;0.954256;0.954271
+C++;2expnode(n=640, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=640, m=50000);2expnode(fixnumbercommunity);0.028124;0.040364;1.198050;1.198227
+C++;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=40960, m=50000);2expnode(fixnumbercommunity);0.064823;3.667129;715.335020;715.336636
+C++;2expnode(n=40960, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=40960, m=50000);2expnode(fixnumbercommunity);0.066779;0.452568;829.081872;829.085064
+C++;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnode(fixnumbercommunity);0.009935;0.178023;13.907104;13.907184
+C++;2expnode(n=2560, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=2560, m=50000);2expnode(fixnumbercommunity);0.013243;0.156100;12.125336;12.125420
+C++;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnode(fixnumbercommunity);0.006765;0.067321;1.938874;1.938945
+C++;2expnode(n=1280, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=1280, m=50000);2expnode(fixnumbercommunity);0.022294;0.072497;2.412738;2.412771
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnode(fixnumbercommunity);0.026622;1.302875;557.726190;557.729034
+C++;2expnode(n=20480, m=50000).graph;../partial_results/partitions/partition10//2expnode(n=20480, m=50000);2expnode(fixnumbercommunity);0.095558;4.578732;1077.766849;1077.768026
